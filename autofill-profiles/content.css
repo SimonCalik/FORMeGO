@@ -1,0 +1,84 @@
+﻿/* content.css - Styles for the in-page floating profile picker popover. */
+.profile-autofiller-popover {
+  position: fixed;
+  width: 220px;
+  background: #151922;
+  border: 1px solid #2a3242;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  color: #f2f5fa;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  z-index: 2147483647;
+  padding: 10px;
+}
+
+.profile-autofiller-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.profile-autofiller-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #eaf0ff;
+}
+
+.profile-autofiller-edit {
+  border: none;
+  background: transparent;
+  color: #d7def0;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: 6px;
+}
+
+.profile-autofiller-edit:hover {
+  background: #253047;
+}
+
+.profile-autofiller-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.profile-autofiller-btn {
+  width: 100%;
+  border: 1px solid #33415d;
+  background: #1f2737;
+  color: #eef3ff;
+  border-radius: 8px;
+  padding: 7px 9px;
+  text-align: left;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.profile-autofiller-btn:hover {
+  background: #2a3550;
+}
+
+.profile-autofiller-empty {
+  font-size: 12px;
+  color: #c0cbde;
+  line-height: 1.35;
+  margin: 2px 0;
+}
+
+.profile-autofiller-field-preview {
+  position: fixed;
+  display: flex;
+  box-sizing: border-box;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2147483646;
+  border: 1px dashed rgba(46, 125, 255, 0.55);
+  background: rgba(64, 145, 255, 0.12);
+  color: rgba(15, 56, 120, 0.92);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
