@@ -1,141 +1,197 @@
-﻿<!-- options.html - Extended profile editor for identity, contact, address, personal and misc autofill data. -->
+<!-- options.html - Secure vault setup, unlock flow, and encrypted profile editor for FORMeGO. -->
 <!doctype html>
 <html lang="sk">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/png" href="logo_2.png" />
-  <title>FORMeGO - Nastavenia</title>
+  <title>FORMeGO - Bezpecne nastavenia</title>
   <link rel="stylesheet" href="options.css" />
 </head>
 <body>
-  <main class="layout">
-    <aside class="sidebar">
-      <div class="brand"><img class="brand-logo" src="logo_s_nazvom.png" alt="FORMeGO" /></div>
-      <div class="sidebar-head">
-        <h1>FORMeGO profily</h1>
-        <button id="addProfile" type="button" aria-label="Pridať profil" title="Pridať profil">
-          <svg aria-hidden="true" class="add-profile-icon" viewBox="0 0 24 24" focusable="false">
-            <path d="M10 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-3.3 0-6 1.8-6 4v1h9.2a5.8 5.8 0 0 1 .9-5Z" />
-            <path d="M17.5 11a.75.75 0 0 1 .75.75v2h2a.75.75 0 0 1 0 1.5h-2v2a.75.75 0 0 1-1.5 0v-2h-2a.75.75 0 0 1 0-1.5h2v-2a.75.75 0 0 1 .75-.75Z" />
-          </svg>
-          <span class="add-profile-label">Pridať profil</span>
-        </button>
+  <main class="shell">
+    <section class="hero-card">
+      <img class="hero-logo" src="logo_s_nazvom.png" alt="FORMeGO" />
+      <div class="hero-copy">
+        <h1>Bezpecny vault profilov</h1>
+        <p>Profily su sifrovane heslom a v citatelnej podobe sa drzia len pocas odomknutej relacie rozsirrenia.</p>
       </div>
-      <div id="profileList" class="profile-list"></div>
-    </aside>
-
-    <section class="editor">
-      <h2>Editor profilu</h2>
-      <p class="editor-subtitle"><img class="editor-logo" src="logo_2.png" alt="FORMeGO logo" /> Spravuj svoje uložené údaje pre rýchle vypĺňanie formulárov.</p>
-      <form id="profileForm" autocomplete="off">
-        <section class="form-section">
-          <h3 class="section-title">
-            <svg aria-hidden="true" class="section-icon" viewBox="0 0 24 24" focusable="false">
-              <path d="M5 5.75A2.75 2.75 0 0 1 7.75 3h8.5A2.75 2.75 0 0 1 19 5.75v12.5A2.75 2.75 0 0 1 16.25 21h-8.5A2.75 2.75 0 0 1 5 18.25Zm3 1.5a.75.75 0 0 0 0 1.5h8a.75.75 0 0 0 0-1.5Zm0 4a.75.75 0 0 0 0 1.5h8a.75.75 0 0 0 0-1.5Zm0 4a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5Z" />
-            </svg>
-            <span>Základ</span>
-          </h3>
-          <label>
-            Názov (label)
-            <input id="label" name="label" type="text" required />
-          </label>
-        </section>
-
-        <section class="form-section">
-          <h3 class="section-title">
-            <svg aria-hidden="true" class="section-icon" viewBox="0 0 24 24" focusable="false">
-              <path d="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12Zm0 2.25c-4.06 0-7.25 2.1-7.25 4.75a.75.75 0 0 0 .75.75h13a.75.75 0 0 0 .75-.75c0-2.65-3.19-4.75-7.25-4.75Z" />
-            </svg>
-            <span>Identita</span>
-          </h3>
-          <div class="grid cols-2">
-            <label>Meno<input id="firstName" name="firstName" type="text" /></label>
-            <label>Druhé meno<input id="middleName" name="middleName" type="text" /></label>
-            <label>Priezvisko<input id="lastName" name="lastName" type="text" /></label>
-            <label>Celé meno<input id="fullName" name="fullName" type="text" /></label>
-            <label>Prezývka<input id="nickName" name="nickName" type="text" /></label>
-          </div>
-        </section>
-
-        <section class="form-section">
-          <h3 class="section-title">
-            <svg aria-hidden="true" class="section-icon" viewBox="0 0 24 24" focusable="false">
-              <path d="M5.75 4A2.75 2.75 0 0 0 3 6.75v10.5A2.75 2.75 0 0 0 5.75 20h12.5A2.75 2.75 0 0 0 21 17.25V6.75A2.75 2.75 0 0 0 18.25 4Zm-.5 3.58 6.21 4.45a.94.94 0 0 0 1.08 0l6.21-4.45a.75.75 0 1 1 .87 1.22l-6.21 4.45a2.44 2.44 0 0 1-2.82 0L4.38 8.8a.75.75 0 1 1 .87-1.22Z" />
-            </svg>
-            <span>Kontakt</span>
-          </h3>
-          <div class="grid cols-2">
-            <label>Email<input id="email" name="email" type="email" /></label>
-            <label>Alternatívny email<input id="email2" name="email2" type="email" /></label>
-            <label>Telefón<input id="phone" name="phone" type="tel" /></label>
-            <label>Alternatívny telefón<input id="phone2" name="phone2" type="tel" /></label>
-          </div>
-        </section>
-
-        <section class="form-section">
-          <h3 class="section-title">
-            <svg aria-hidden="true" class="section-icon" viewBox="0 0 24 24" focusable="false">
-              <path d="M9.5 4A2.5 2.5 0 0 0 7 6.5V7H5.75A2.75 2.75 0 0 0 3 9.75v7.5A2.75 2.75 0 0 0 5.75 20h12.5A2.75 2.75 0 0 0 21 17.25v-7.5A2.75 2.75 0 0 0 18.25 7H17v-.5A2.5 2.5 0 0 0 14.5 4Zm0 1.5h5A1 1 0 0 1 15.5 6.5V7h-7v-.5a1 1 0 0 1 1-1ZM4.5 11h15v6.25a1.25 1.25 0 0 1-1.25 1.25H5.75A1.25 1.25 0 0 1 4.5 17.25Z" />
-            </svg>
-            <span>Zamestnanie</span>
-          </h3>
-          <div class="grid cols-2">
-            <label>Firma<input id="company" name="company" type="text" /></label>
-            <label>Pozícia<input id="jobTitle" name="jobTitle" type="text" /></label>
-          </div>
-        </section>
-
-        <section class="form-section">
-          <h3 class="section-title">
-            <svg aria-hidden="true" class="section-icon" viewBox="0 0 24 24" focusable="false">
-              <path d="M12 2.75a6.25 6.25 0 0 0-6.25 6.25c0 4.58 5.12 10.68 5.34 10.94a1.19 1.19 0 0 0 1.82 0c.22-.26 5.34-6.36 5.34-10.94A6.25 6.25 0 0 0 12 2.75Zm0 8.5A2.25 2.25 0 1 1 14.25 9 2.25 2.25 0 0 1 12 11.25Z" />
-            </svg>
-            <span>Adresa</span>
-          </h3>
-          <div class="grid cols-2">
-            <label>Adresa 1<input id="address1" name="address1" type="text" /></label>
-            <label>Adresa 2<input id="address2" name="address2" type="text" /></label>
-            <label>Mesto<input id="city" name="city" type="text" /></label>
-            <label>Kraj/Región<input id="state" name="state" type="text" /></label>
-            <label>PSČ<input id="zip" name="zip" type="text" /></label>
-            <label>Krajina<input id="country" name="country" type="text" /></label>
-          </div>
-        </section>
-
-        <section class="form-section">
-          <h3 class="section-title">
-            <svg aria-hidden="true" class="section-icon" viewBox="0 0 24 24" focusable="false">
-              <path d="M7.75 3A2.75 2.75 0 0 0 5 5.75v12.5A2.75 2.75 0 0 0 7.75 21h8.5A2.75 2.75 0 0 0 19 18.25V5.75A2.75 2.75 0 0 0 16.25 3Zm1.5 3.25a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75ZM12 9a3 3 0 1 1-3 3 3 3 0 0 1 3-3Zm0 1.5A1.5 1.5 0 1 0 13.5 12 1.5 1.5 0 0 0 12 10.5Zm-2.5 5.75a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 0 1.5h-3.5a.75.75 0 0 1-.75-.75Z" />
-            </svg>
-            <span>Osobné</span>
-          </h3>
-          <div class="grid cols-2">
-            <label>Dátum narodenia<input id="birthDate" name="birthDate" type="date" /></label>
-            <label>Rodné číslo / National ID<input id="nationalId" name="nationalId" type="text" /></label>
-            <label>Tax ID (DIČ/IČ DPH)<input id="taxId" name="taxId" type="text" /></label>
-            <label>Číslo pasu<input id="passportNumber" name="passportNumber" type="text" /></label>
-            <label>IBAN<input id="iban" name="iban" type="text" /></label>
-          </div>
-        </section>
-
-        <section class="form-section">
-          <h3 class="section-title">
-            <svg aria-hidden="true" class="section-icon" viewBox="0 0 24 24" focusable="false">
-              <path d="M6.75 4A2.75 2.75 0 0 0 4 6.75v10.5A2.75 2.75 0 0 0 6.75 20h10.5A2.75 2.75 0 0 0 20 17.25V6.75A2.75 2.75 0 0 0 17.25 4Zm1.5 4a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6A.75.75 0 0 1 8.25 8Zm0 4a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Zm0 4a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75Z" />
-            </svg>
-            <span>Iné</span>
-          </h3>
-          <label>Poznámka<textarea id="note" name="note" rows="4"></textarea></label>
-        </section>
-
-        <div class="actions">
-          <button id="saveProfile" type="submit">Uložiť</button>
-          <button id="deleteProfile" type="button">Zmazať</button>
-        </div>
-      </form>
-      <p id="status" class="status" aria-live="polite"></p>
     </section>
+
+    <section id="authView" class="auth-card">
+      <div class="auth-head">
+        <h2 id="authTitle">Nacitavam zabezpecenie</h2>
+        <p id="authDescription" class="auth-description"></p>
+      </div>
+
+      <form id="setupForm" class="auth-form" hidden>
+        <label>
+          Heslo pre vault
+          <input id="setupPassphrase" type="password" minlength="8" autocomplete="new-password" required />
+        </label>
+        <label>
+          Potvrdit heslo
+          <input id="setupPassphraseConfirm" type="password" minlength="8" autocomplete="new-password" required />
+        </label>
+        <button id="setupSubmit" type="submit">Vytvorit sifrovany vault</button>
+      </form>
+
+      <form id="unlockForm" class="auth-form" hidden>
+        <label>
+          Heslo pre odomknutie
+          <input id="unlockPassphrase" type="password" autocomplete="current-password" required />
+        </label>
+        <button id="unlockSubmit" type="submit">Odomknut profily</button>
+      </form>
+
+      <p id="authStatus" class="status" aria-live="polite"></p>
+    </section>
+
+    <main id="appView" class="layout" hidden>
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <div class="brand"><img class="brand-logo" src="logo_s_nazvom.png" alt="FORMeGO" /></div>
+          <div class="vault-pill">
+            <span class="vault-pill-dot"></span>
+            <span>Vault odomknuty</span>
+          </div>
+        </div>
+
+        <div class="sidebar-head">
+          <h2>FORMeGO profily</h2>
+          <button id="addProfile" type="button" aria-label="Pridat profil" title="Pridat profil">
+            <svg aria-hidden="true" class="add-profile-icon" viewBox="0 0 24 24" focusable="false">
+              <path d="M10 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-3.3 0-6 1.8-6 4v1h9.2a5.8 5.8 0 0 1 .9-5Z" />
+              <path d="M17.5 11a.75.75 0 0 1 .75.75v2h2a.75.75 0 0 1 0 1.5h-2v2a.75.75 0 0 1-1.5 0v-2h-2a.75.75 0 0 1 0-1.5h2v-2a.75.75 0 0 1 .75-.75Z" />
+            </svg>
+            <span class="add-profile-label">Pridat profil</span>
+          </button>
+        </div>
+
+        <div id="profileList" class="profile-list"></div>
+
+        <div class="sidebar-actions">
+          <button id="lockVault" type="button" class="secondary-btn">Zamknut vault</button>
+        </div>
+      </aside>
+
+      <section class="editor">
+        <h2>Editor profilu</h2>
+        <p class="editor-subtitle">
+          <img class="editor-logo" src="logo_2.png" alt="FORMeGO logo" />
+          Citlive udaje sa ukladaju zasifrovane. Po zatvoreni alebo zamknuti vaultu sa odomknuta relacia zrusi.
+        </p>
+
+        <form id="profileForm" autocomplete="off">
+          <section class="form-section">
+            <h3 class="section-title">
+              <svg aria-hidden="true" class="section-icon" viewBox="0 0 24 24" focusable="false">
+                <path d="M5 5.75A2.75 2.75 0 0 1 7.75 3h8.5A2.75 2.75 0 0 1 19 5.75v12.5A2.75 2.75 0 0 1 16.25 21h-8.5A2.75 2.75 0 0 1 5 18.25Zm3 1.5a.75.75 0 0 0 0 1.5h8a.75.75 0 0 0 0-1.5Zm0 4a.75.75 0 0 0 0 1.5h8a.75.75 0 0 0 0-1.5Zm0 4a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5Z" />
+              </svg>
+              <span>Zaklad</span>
+            </h3>
+            <label>
+              Nazov profilu
+              <input id="label" name="label" type="text" required />
+            </label>
+          </section>
+
+          <section class="form-section">
+            <h3 class="section-title">
+              <svg aria-hidden="true" class="section-icon" viewBox="0 0 24 24" focusable="false">
+                <path d="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12Zm0 2.25c-4.06 0-7.25 2.1-7.25 4.75a.75.75 0 0 0 .75.75h13a.75.75 0 0 0 .75-.75c0-2.65-3.19-4.75-7.25-4.75Z" />
+              </svg>
+              <span>Identita</span>
+            </h3>
+            <div class="grid cols-2">
+              <label>Meno<input id="firstName" name="firstName" type="text" /></label>
+              <label>Druhe meno<input id="middleName" name="middleName" type="text" /></label>
+              <label>Priezvisko<input id="lastName" name="lastName" type="text" /></label>
+              <label>Cele meno<input id="fullName" name="fullName" type="text" /></label>
+              <label>Prezvka<input id="nickName" name="nickName" type="text" /></label>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <h3 class="section-title">
+              <svg aria-hidden="true" class="section-icon" viewBox="0 0 24 24" focusable="false">
+                <path d="M5.75 4A2.75 2.75 0 0 0 3 6.75v10.5A2.75 2.75 0 0 0 5.75 20h12.5A2.75 2.75 0 0 0 21 17.25V6.75A2.75 2.75 0 0 0 18.25 4Zm-.5 3.58 6.21 4.45a.94.94 0 0 0 1.08 0l6.21-4.45a.75.75 0 1 1 .87 1.22l-6.21 4.45a2.44 2.44 0 0 1-2.82 0L4.38 8.8a.75.75 0 1 1 .87-1.22Z" />
+              </svg>
+              <span>Kontakt</span>
+            </h3>
+            <div class="grid cols-2">
+              <label>Email<input id="email" name="email" type="email" /></label>
+              <label>Alternativny email<input id="email2" name="email2" type="email" /></label>
+              <label>Telefon<input id="phone" name="phone" type="tel" /></label>
+              <label>Alternativny telefon<input id="phone2" name="phone2" type="tel" /></label>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <h3 class="section-title">
+              <svg aria-hidden="true" class="section-icon" viewBox="0 0 24 24" focusable="false">
+                <path d="M9.5 4A2.5 2.5 0 0 0 7 6.5V7H5.75A2.75 2.75 0 0 0 3 9.75v7.5A2.75 2.75 0 0 0 5.75 20h12.5A2.75 2.75 0 0 0 21 17.25v-7.5A2.75 2.75 0 0 0 18.25 7H17v-.5A2.5 2.5 0 0 0 14.5 4Zm0 1.5h5A1 1 0 0 1 15.5 6.5V7h-7v-.5a1 1 0 0 1 1-1ZM4.5 11h15v6.25a1.25 1.25 0 0 1-1.25 1.25H5.75A1.25 1.25 0 0 1 4.5 17.25Z" />
+              </svg>
+              <span>Zamestnanie</span>
+            </h3>
+            <div class="grid cols-2">
+              <label>Firma<input id="company" name="company" type="text" /></label>
+              <label>Pozicia<input id="jobTitle" name="jobTitle" type="text" /></label>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <h3 class="section-title">
+              <svg aria-hidden="true" class="section-icon" viewBox="0 0 24 24" focusable="false">
+                <path d="M12 2.75a6.25 6.25 0 0 0-6.25 6.25c0 4.58 5.12 10.68 5.34 10.94a1.19 1.19 0 0 0 1.82 0c.22-.26 5.34-6.36 5.34-10.94A6.25 6.25 0 0 0 12 2.75Zm0 8.5A2.25 2.25 0 1 1 14.25 9 2.25 2.25 0 0 1 12 11.25Z" />
+              </svg>
+              <span>Adresa</span>
+            </h3>
+            <div class="grid cols-2">
+              <label>Adresa 1<input id="address1" name="address1" type="text" /></label>
+              <label>Adresa 2<input id="address2" name="address2" type="text" /></label>
+              <label>Mesto<input id="city" name="city" type="text" /></label>
+              <label>Kraj / region<input id="state" name="state" type="text" /></label>
+              <label>PSC<input id="zip" name="zip" type="text" /></label>
+              <label>Krajina<input id="country" name="country" type="text" /></label>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <h3 class="section-title">
+              <svg aria-hidden="true" class="section-icon" viewBox="0 0 24 24" focusable="false">
+                <path d="M7.75 3A2.75 2.75 0 0 0 5 5.75v12.5A2.75 2.75 0 0 0 7.75 21h8.5A2.75 2.75 0 0 0 19 18.25V5.75A2.75 2.75 0 0 0 16.25 3Zm1.5 3.25a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75ZM12 9a3 3 0 1 1-3 3 3 3 0 0 1 3-3Zm0 1.5A1.5 1.5 0 1 0 13.5 12 1.5 1.5 0 0 0 12 10.5Zm-2.5 5.75a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 0 1.5h-3.5a.75.75 0 0 1-.75-.75Z" />
+              </svg>
+              <span>Osobne</span>
+            </h3>
+            <div class="grid cols-2">
+              <label>Datum narodenia<input id="birthDate" name="birthDate" type="date" /></label>
+              <label>Rodne cislo / National ID<input id="nationalId" name="nationalId" type="text" /></label>
+              <label>Tax ID (DIC / IC DPH)<input id="taxId" name="taxId" type="text" /></label>
+              <label>Cislo pasu<input id="passportNumber" name="passportNumber" type="text" /></label>
+              <label>IBAN<input id="iban" name="iban" type="text" /></label>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <h3 class="section-title">
+              <svg aria-hidden="true" class="section-icon" viewBox="0 0 24 24" focusable="false">
+                <path d="M6.75 4A2.75 2.75 0 0 0 4 6.75v10.5A2.75 2.75 0 0 0 6.75 20h10.5A2.75 2.75 0 0 0 20 17.25V6.75A2.75 2.75 0 0 0 17.25 4Zm1.5 4a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6A.75.75 0 0 1 8.25 8Zm0 4a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Zm0 4a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75Z" />
+              </svg>
+              <span>Ine</span>
+            </h3>
+            <label>Poznamka<textarea id="note" name="note" rows="4"></textarea></label>
+          </section>
+
+          <div class="actions">
+            <button id="saveProfile" type="submit">Ulozit</button>
+            <button id="deleteProfile" type="button">Zmazat</button>
+          </div>
+        </form>
+
+        <p id="appStatus" class="status" aria-live="polite"></p>
+      </section>
+    </main>
   </main>
 
   <script src="options.js"></script>

@@ -1,40 +1,31 @@
-﻿// content.js - Fills nearest form scope from extended profiles using heuristic field matching.
+// content.js - Shows secure profile picker and requests decrypted profile data only on explicit user action.
 (() => {
-  const STORAGE_KEY = 'profiles';
   const OVERWRITE_EXISTING = false;
   const FOCUS_SELECTOR = 'input, textarea';
   const FIELD_SELECTOR = 'input, textarea, select';
   const TEXT_INPUT_TYPES = new Set(['', 'text', 'email', 'tel', 'search', 'url', 'number', 'date']);
   const SKIP_INPUT_TYPES = new Set(['password', 'file', 'hidden', 'submit', 'button', 'reset']);
-  const DATA_KEYS = [
-    'firstName', 'middleName', 'lastName', 'fullName', 'nickName',
-    'email', 'email2', 'phone', 'phone2',
-    'company', 'jobTitle', 'address1', 'address2', 'city', 'state', 'zip', 'country',
-    'birthDate', 'nationalId', 'taxId', 'passportNumber', 'iban', 'note'
-  ];
 
   let popoverEl = null;
   let lastFocusedEl = null;
-  let profilesCache = null;
-  let previewItems = [];
   let rafScheduled = false;
   let openRequestId = 0;
 
-  function openOptionsPageFromContent() {
+  function sendRuntimeMessage(message) {
     return new Promise((resolve, reject) => {
       try {
-        chrome.runtime.sendMessage({ type: 'OPEN_OPTIONS_PAGE' }, (response) => {
+        chrome.runtime.sendMessage(message, (response) => {
           if (chrome.runtime.lastError) {
             reject(new Error(chrome.runtime.lastError.message));
             return;
           }
 
-          if (response && response.ok) {
-            resolve(true);
+          if (!response || !response.ok) {
+            reject(new Error(response?.error || 'Unknown extension error.'));
             return;
           }
 
-          reject(new Error(response?.error || 'Failed to open options page.'));
+          resolve(response);
         });
       } catch (error) {
         reject(error);
@@ -106,8 +97,7 @@
       el.getAttribute('data-qa') || '',
       el.getAttribute('data-field') || ''
     ];
-    const labelText = getElementLabelText(el);
-    return normalizeText(attrs.join(' ') + ' ' + labelText);
+    return normalizeText(`${attrs.join(' ')} ${getElementLabelText(el)}`);
   }
 
   function includesAny(text, tokens) {
@@ -138,28 +128,28 @@
 
     if (includesAny(hint, ['alternate email', 'secondary email', 'email2', 'backup email'])) return 'email2';
     if (includesAny(hint, ['alternate phone', 'secondary phone', 'phone2', 'backup phone'])) return 'phone2';
-    if (includesAny(hint, ['middle name', 'second name', 'druhe meno', 'druh� meno', 'middle'])) return 'middleName';
-    if (includesAny(hint, ['nickname', 'nick name', 'nick', 'prezyvka', 'prez�vka'])) return 'nickName';
+    if (includesAny(hint, ['middle name', 'second name', 'druhe meno', 'druhe meno', 'middle'])) return 'middleName';
+    if (includesAny(hint, ['nickname', 'nick name', 'nick', 'prezyvka', 'prezyvka'])) return 'nickName';
     if (includesAny(hint, ['birth date', 'date of birth', 'dob', 'naroden', 'birthday', 'bday'])) return 'birthDate';
     if (includesAny(hint, ['passport'])) return 'passportNumber';
-    if (includesAny(hint, ['iban', 'bank account', 'ucet', '�cet'])) return 'iban';
-    if (includesAny(hint, ['vat', 'tax id', 'dic', 'dic', 'ico', 'ico', 'ic dph', 'ic dph'])) return 'taxId';
-    if (includesAny(hint, ['national id', 'id number', 'birth number', 'rodne', 'rodn�'])) return 'nationalId';
+    if (includesAny(hint, ['iban', 'bank account', 'ucet', 'ucet'])) return 'iban';
+    if (includesAny(hint, ['vat', 'tax id', 'dic', 'ico', 'ic dph'])) return 'taxId';
+    if (includesAny(hint, ['national id', 'id number', 'birth number', 'rodne'])) return 'nationalId';
     if (includesAny(hint, ['company', 'firma', 'organization'])) return 'company';
-    if (includesAny(hint, ['job title', 'position', 'pozicia', 'poz�cia', 'title'])) return 'jobTitle';
+    if (includesAny(hint, ['job title', 'position', 'pozicia', 'title'])) return 'jobTitle';
     if (includesAny(hint, ['address2', 'address line 2', 'line2', 'apt', 'suite', 'unit', 'floor'])) return 'address2';
     if (includesAny(hint, ['state', 'region', 'kraj', 'okres'])) return 'state';
-    if (includesAny(hint, ['country', 'krajina', 'stat', '�t�t'])) return 'country';
-    if (includesAny(hint, ['note', 'poznamka', 'pozn�mka', 'comment', 'remark'])) return 'note';
+    if (includesAny(hint, ['country', 'krajina', 'stat'])) return 'country';
+    if (includesAny(hint, ['note', 'poznamka', 'comment', 'remark'])) return 'note';
 
-    if (includesAny(hint, ['first name', 'firstname', 'given name', 'forename', 'krstne meno', 'krstn� meno'])) return 'firstName';
+    if (includesAny(hint, ['first name', 'firstname', 'given name', 'forename', 'krstne meno'])) return 'firstName';
     if (includesAny(hint, ['last name', 'lastname', 'family name', 'surname', 'priezvisko'])) return 'lastName';
-    if (includesAny(hint, ['full name', 'fullname', 'cele meno', 'cel� meno'])) return 'fullName';
+    if (includesAny(hint, ['full name', 'fullname', 'cele meno'])) return 'fullName';
     if (includesAny(hint, ['e-mail', 'email', 'mail'])) return 'email';
     if (includesAny(hint, ['phone', 'mobile', 'telephone', 'tel', 'telef', 'kontakt'])) return 'phone';
     if (includesAny(hint, ['address', 'street', 'ulica', 'adresa', 'line1', 'address1'])) return 'address1';
     if (includesAny(hint, ['city', 'town', 'mesto', 'obec'])) return 'city';
-    if (includesAny(hint, ['zip', 'postal', 'post code', 'postcode', 'psc', 'psc'])) return 'zip';
+    if (includesAny(hint, ['zip', 'postal', 'post code', 'postcode', 'psc'])) return 'zip';
 
     return null;
   }
@@ -207,36 +197,11 @@
     return true;
   }
 
-  function emptyData() {
-    const data = {};
-    for (const key of DATA_KEYS) data[key] = '';
-    return data;
-  }
-
-  function normalizeProfile(profile, index) {
-    if (!profile || typeof profile !== 'object') return null;
-
-    const srcData = (profile.data && typeof profile.data === 'object') ? profile.data : {};
-    const data = emptyData();
-    for (const key of DATA_KEYS) {
-      data[key] = normalizeSpaces(srcData[key] ?? '');
-    }
-
-    return {
-      id: String(profile.id || `profile-${index + 1}`),
-      label: String(profile.label || `Profil ${index + 1}`),
-      data
-    };
-  }
-
   function buildDerivedProfileData(profileData) {
     const next = { ...(profileData || {}) };
-    const explicitFullName = normalizeSpaces(next.fullName || '');
-
-    if (!explicitFullName) {
+    if (!normalizeSpaces(next.fullName || '')) {
       next.fullName = normalizeSpaces(`${next.firstName || ''} ${next.middleName || ''} ${next.lastName || ''}`);
     }
-
     return next;
   }
 
@@ -290,8 +255,9 @@
     if (auto.includes('search')) return true;
     if (name === 'q' || name === 'query' || name === 'search') return true;
 
-    return includesAny(hint, ['search', 'hladat', 'h\u013eada', 'vyhladat', 'vyh\u013eada', 'find']);
+    return includesAny(hint, ['search', 'hladat', 'vyhladat', 'find']);
   }
+
   function shouldOfferAutofill(anchorEl) {
     if (isLikelySearchField(anchorEl)) return false;
 
@@ -318,129 +284,14 @@
 
     return false;
   }
-  function getFieldPreviewLabel(fieldType, field) {
-    const labelText = normalizeSpaces(getElementLabelText(field));
-    const placeholder = normalizeSpaces(field.getAttribute('placeholder') || '');
-    const ariaLabel = normalizeSpaces(field.getAttribute('aria-label') || '');
 
-    return labelText || placeholder || ariaLabel || fieldType;
-  }
-
-  function getFillPlan(profile, anchorEl = lastFocusedEl) {
-    if (!anchorEl || !document.contains(anchorEl)) return [];
-
-    const normalized = normalizeProfile(profile, 0);
-    if (!normalized) return [];
-
-    const profileData = buildDerivedProfileData(normalized.data);
-    const scope = resolveFillScope(anchorEl);
-    const fields = getFillableFields(scope);
-    const seen = new Set();
-    const plan = [];
-
-    for (const field of fields) {
-      if (!OVERWRITE_EXISTING && fieldHasUserValue(field)) continue;
-
-      const fieldType = getFieldType(field);
-      if (!fieldType || seen.has(fieldType)) continue;
-
-      const value = getProfileValue(profileData, fieldType);
-      if (!value) continue;
-
-      seen.add(fieldType);
-      plan.push({
-        field,
-        fieldType,
-        label: getFieldPreviewLabel(fieldType, field),
-        value
-      });
-    }
-
-    return plan;
-  }
-
-  function getProfilePreviewText(profile, anchorEl = lastFocusedEl) {
-    const plan = getFillPlan(profile, anchorEl);
-    if (plan.length === 0) return 'V tomto formulari nie su ziadne doplnitelne udaje.';
-
-    return plan
-      .slice(0, 8)
-      .map((entry) => `${entry.label}: ${entry.value}`)
-      .join('\n');
-  }
-
-  function clearFieldPreview() {
-    for (const item of previewItems) {
-      item.overlay.remove();
-    }
-    previewItems = [];
-  }
-
-  function positionFieldPreview(item) {
-    if (!document.contains(item.field)) {
-      item.overlay.style.display = 'none';
-      return;
-    }
-
-    const rect = item.field.getBoundingClientRect();
-    if (rect.width <= 0 || rect.height <= 0) {
-      item.overlay.style.display = 'none';
-      return;
-    }
-
-    item.overlay.style.display = 'flex';
-    item.overlay.style.left = `${Math.round(rect.left)}px`;
-    item.overlay.style.top = `${Math.round(rect.top)}px`;
-    item.overlay.style.width = `${Math.round(rect.width)}px`;
-    item.overlay.style.height = `${Math.round(rect.height)}px`;
-  }
-
-  function showFieldPreview(profile, anchorEl = lastFocusedEl) {
-    clearFieldPreview();
-
-    const plan = getFillPlan(profile, anchorEl);
-    for (const entry of plan) {
-      const overlay = document.createElement('div');
-      overlay.className = 'profile-autofiller-field-preview';
-      overlay.textContent = entry.value;
-      overlay.title = `${entry.label}: ${entry.value}`;
-
-      const styles = window.getComputedStyle(entry.field);
-      overlay.style.paddingTop = styles.paddingTop;
-      overlay.style.paddingRight = styles.paddingRight;
-      overlay.style.paddingBottom = styles.paddingBottom;
-      overlay.style.paddingLeft = styles.paddingLeft;
-      overlay.style.borderRadius = styles.borderRadius;
-      overlay.style.font = styles.font;
-      overlay.style.lineHeight = styles.lineHeight;
-      overlay.style.letterSpacing = styles.letterSpacing;
-      overlay.style.textAlign = styles.textAlign;
-      overlay.style.whiteSpace = entry.field instanceof HTMLTextAreaElement ? 'pre-wrap' : 'nowrap';
-      overlay.style.alignItems = entry.field instanceof HTMLTextAreaElement ? 'flex-start' : 'center';
-
-      document.documentElement.appendChild(overlay);
-      const item = { field: entry.field, overlay };
-      previewItems.push(item);
-      positionFieldPreview(item);
-    }
-  }
-
-  function repositionFieldPreview() {
-    for (const item of previewItems) {
-      positionFieldPreview(item);
-    }
-  }
   function fillFromProfile(profile) {
     const anchorEl = lastFocusedEl;
-    if (!anchorEl || !document.contains(anchorEl)) return false;
+    if (!anchorEl || !document.contains(anchorEl) || !profile) return false;
 
-    const normalized = normalizeProfile(profile, 0);
-    if (!normalized) return false;
-
-    const profileData = buildDerivedProfileData(normalized.data);
+    const profileData = buildDerivedProfileData(profile.data || {});
     const scope = resolveFillScope(anchorEl);
     const fields = getFillableFields(scope);
-
     let changes = 0;
 
     for (const field of fields) {
@@ -467,8 +318,8 @@
 
     return changes > 0;
   }
+
   function closePopover() {
-    clearFieldPreview();
     if (popoverEl) {
       popoverEl.remove();
       popoverEl = null;
@@ -481,7 +332,6 @@
     requestAnimationFrame(() => {
       rafScheduled = false;
       repositionPopover();
-      repositionFieldPreview();
     });
   }
 
@@ -508,15 +358,11 @@
     popoverEl.style.top = `${Math.round(top)}px`;
   }
 
-  async function loadProfiles() {
-    if (profilesCache !== null) return profilesCache;
-
-    const result = await chrome.storage.sync.get({ [STORAGE_KEY]: [] });
-    const raw = Array.isArray(result[STORAGE_KEY]) ? result[STORAGE_KEY] : [];
-    const normalized = raw.map((p, idx) => normalizeProfile(p, idx)).filter(Boolean);
-
-    profilesCache = normalized;
-    return profilesCache;
+  function renderStateMessage(listEl, text) {
+    const empty = document.createElement('div');
+    empty.className = 'profile-autofiller-empty';
+    empty.textContent = text;
+    listEl.appendChild(empty);
   }
 
   async function openPopoverFor(el) {
@@ -537,18 +383,17 @@
     const editBtn = document.createElement('button');
     editBtn.className = 'profile-autofiller-edit';
     editBtn.type = 'button';
-    editBtn.title = 'Upravi\u0165 profily';
-    editBtn.setAttribute('aria-label', 'Upravi\u0165 profily');
-    editBtn.textContent = '\u270e';
-    editBtn.addEventListener('click', async (ev) => {
-      ev.preventDefault();
-      ev.stopPropagation();
+    editBtn.title = 'Upraviť profily';
+    editBtn.setAttribute('aria-label', 'Upraviť profily');
+    editBtn.textContent = '✎';
+    editBtn.addEventListener('click', async (event) => {
+      event.preventDefault();
+      event.stopPropagation();
 
       try {
-        await openOptionsPageFromContent();
+        await sendRuntimeMessage({ type: 'OPEN_OPTIONS_PAGE' });
       } catch (_error) {
-        const optionsUrl = chrome.runtime.getURL('options.html');
-        window.open(optionsUrl, '_blank', 'noopener');
+        window.open(chrome.runtime.getURL('options.html'), '_blank', 'noopener');
       }
 
       closePopover();
@@ -559,45 +404,73 @@
     const list = document.createElement('div');
     list.className = 'profile-autofiller-list';
 
-    const profiles = await loadProfiles();
-    if (requestId !== openRequestId || lastFocusedEl !== el) return;
-
-    if (profiles.length === 0) {
-      const empty = document.createElement('div');
-      empty.className = 'profile-autofiller-empty';
-      empty.textContent = '\u017diadne profily. Klikni \u270e a pridaj.';
-      list.appendChild(empty);
-    } else {
-      for (const profile of profiles) {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'profile-autofiller-btn';
-        btn.textContent = profile.label;
-        btn.addEventListener('mouseenter', () => {
-          showFieldPreview(profile, el);
-        });
-        btn.addEventListener('mouseleave', () => {
-          clearFieldPreview();
-        });
-        btn.addEventListener('focus', () => {
-          showFieldPreview(profile, el);
-        });
-        btn.addEventListener('blur', () => {
-          clearFieldPreview();
-        });
-        btn.addEventListener('click', (ev) => {
-          ev.preventDefault();
-          ev.stopPropagation();
-          fillFromProfile(profile);
-          closePopover();
-        });
-        list.appendChild(btn);
-      }
-    }
-
     popover.append(head, list);
     document.documentElement.appendChild(popover);
     popoverEl = popover;
+    repositionPopover();
+
+    let vaultStatus;
+    try {
+      const statusResponse = await sendRuntimeMessage({ type: 'GET_VAULT_STATUS' });
+      vaultStatus = statusResponse.status;
+    } catch (_error) {
+      vaultStatus = null;
+    }
+
+    if (requestId !== openRequestId || lastFocusedEl !== el || !popoverEl) return;
+
+    if (!vaultStatus) {
+      renderStateMessage(list, 'Vault nie je dostupný. Klikni ✎ a otvor nastavenia.');
+      repositionPopover();
+      return;
+    }
+
+    if (!vaultStatus.hasVault && !vaultStatus.hasLegacyPlain) {
+      renderStateMessage(list, 'Bezpečný vault nie je nastavený. Klikni ✎ a vytvor heslo.');
+      repositionPopover();
+      return;
+    }
+
+    if (!vaultStatus.unlocked) {
+      renderStateMessage(list, 'Vault je zamknutý. Klikni ✎ a odomkni profily.');
+      repositionPopover();
+      return;
+    }
+
+    const profilesResponse = await sendRuntimeMessage({ type: 'GET_PROFILE_SUMMARIES' }).catch(() => ({ profiles: null }));
+    if (requestId !== openRequestId || lastFocusedEl !== el || !popoverEl) return;
+
+    const profiles = Array.isArray(profilesResponse.profiles) ? profilesResponse.profiles : [];
+    if (profiles.length === 0) {
+      renderStateMessage(list, 'Žiadne profily. Klikni ✎ a pridaj.');
+      repositionPopover();
+      return;
+    }
+
+    for (const profile of profiles) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'profile-autofiller-btn';
+      btn.textContent = profile.label;
+      btn.addEventListener('click', async (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        try {
+          const response = await sendRuntimeMessage({ type: 'GET_PROFILE_DATA', id: profile.id });
+          fillFromProfile(response.profile);
+        } catch (_error) {
+          await sendRuntimeMessage({ type: 'OPEN_OPTIONS_PAGE' }).catch(() => {
+            window.open(chrome.runtime.getURL('options.html'), '_blank', 'noopener');
+          });
+        }
+
+        closePopover();
+      });
+
+      list.appendChild(btn);
+    }
+
     repositionPopover();
   }
 
@@ -625,16 +498,8 @@
     closePopover();
   }
 
-  function onStorageChanged(changes, area) {
-    if (area !== 'sync' || !changes[STORAGE_KEY]) return;
-
-    const next = Array.isArray(changes[STORAGE_KEY].newValue) ? changes[STORAGE_KEY].newValue : [];
-    profilesCache = next.map((p, idx) => normalizeProfile(p, idx)).filter(Boolean);
-  }
-
   document.addEventListener('focusin', onFocusIn, true);
   document.addEventListener('pointerdown', onPointerDown, true);
   window.addEventListener('scroll', scheduleReposition, true);
   window.addEventListener('resize', scheduleReposition, true);
-  chrome.storage.onChanged.addListener(onStorageChanged);
 })();

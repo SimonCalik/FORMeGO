@@ -1,6 +1,5 @@
-﻿// options.js - CRUD and migration for extended profile data stored in chrome.storage.sync.
+// options.js - Unlocks encrypted vault and manages profiles through background messaging only.
 (() => {
-  const STORAGE_KEY = 'profiles';
   const FIELD_KEYS = [
     'firstName', 'middleName', 'lastName', 'fullName', 'nickName',
     'email', 'email2', 'phone', 'phone2',
@@ -11,20 +10,60 @@
   ];
 
   const els = {
+    authView: document.getElementById('authView'),
+    authTitle: document.getElementById('authTitle'),
+    authDescription: document.getElementById('authDescription'),
+    authStatus: document.getElementById('authStatus'),
+    setupForm: document.getElementById('setupForm'),
+    setupPassphrase: document.getElementById('setupPassphrase'),
+    setupPassphraseConfirm: document.getElementById('setupPassphraseConfirm'),
+    unlockForm: document.getElementById('unlockForm'),
+    unlockPassphrase: document.getElementById('unlockPassphrase'),
+    appView: document.getElementById('appView'),
     list: document.getElementById('profileList'),
     form: document.getElementById('profileForm'),
-    status: document.getElementById('status'),
+    appStatus: document.getElementById('appStatus'),
     addBtn: document.getElementById('addProfile'),
     delBtn: document.getElementById('deleteProfile'),
+    lockBtn: document.getElementById('lockVault'),
     label: document.getElementById('label')
   };
 
   let profiles = [];
   let selectedId = null;
+  let unlockedPassphrase = '';
+  let vaultStatus = null;
 
-  function showStatus(text, isError = false) {
-    els.status.textContent = text;
-    els.status.style.color = isError ? '#ff9ba8' : '#b6c2d8';
+  function sendRuntimeMessage(message) {
+    return new Promise((resolve, reject) => {
+      try {
+        chrome.runtime.sendMessage(message, (response) => {
+          if (chrome.runtime.lastError) {
+            reject(new Error(chrome.runtime.lastError.message));
+            return;
+          }
+
+          if (!response || !response.ok) {
+            reject(new Error(response?.error || 'Unknown extension error.'));
+            return;
+          }
+
+          resolve(response);
+        });
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
+
+  function showAuthStatus(text, isError = false) {
+    els.authStatus.textContent = text;
+    els.authStatus.style.color = isError ? '#ff9ba8' : '#b6c2d8';
+  }
+
+  function showAppStatus(text, isError = false) {
+    els.appStatus.textContent = text;
+    els.appStatus.style.color = isError ? '#ff9ba8' : '#b6c2d8';
   }
 
   function emptyData() {
@@ -42,45 +81,12 @@
     return `${base}-${Date.now().toString(36)}`;
   }
 
-  function normalizeProfile(profile, index) {
-    if (!profile || typeof profile !== 'object') return null;
-
-    const baseData = emptyData();
-    const srcData = (profile.data && typeof profile.data === 'object') ? profile.data : {};
-
-    for (const key of FIELD_KEYS) {
-      baseData[key] = String(srcData[key] ?? '').trim();
-    }
-
-    return {
-      id: String(profile.id || `profile-${index + 1}`),
-      label: String(profile.label || `Profil ${index + 1}`),
-      data: baseData
-    };
-  }
-
-  async function loadProfiles() {
-    const result = await chrome.storage.sync.get({ [STORAGE_KEY]: [] });
-    const raw = Array.isArray(result[STORAGE_KEY]) ? result[STORAGE_KEY] : [];
-    profiles = raw.map((p, idx) => normalizeProfile(p, idx)).filter(Boolean);
-
-    const rawJson = JSON.stringify(raw);
-    const normalizedJson = JSON.stringify(profiles);
-    if (rawJson !== normalizedJson) {
-      await chrome.storage.sync.set({ [STORAGE_KEY]: profiles });
-    }
-  }
-
-  async function saveProfiles() {
-    await chrome.storage.sync.set({ [STORAGE_KEY]: profiles });
+  function getFieldEl(key) {
+    return document.getElementById(key);
   }
 
   function getSelectedProfile() {
-    return profiles.find((p) => p.id === selectedId) || null;
-  }
-
-  function getFieldEl(key) {
-    return document.getElementById(key);
+    return profiles.find((profile) => profile.id === selectedId) || null;
   }
 
   function fillForm(profile) {
@@ -106,7 +112,7 @@
 
     if (profiles.length === 0) {
       const msg = document.createElement('p');
-      msg.textContent = 'Zatiaľ nemáš žiadne profily.';
+      msg.textContent = 'Vo vault-e zatial nie su ziadne profily.';
       msg.style.color = '#b6c2d8';
       msg.style.margin = '0';
       els.list.appendChild(msg);
@@ -116,13 +122,13 @@
     for (const profile of profiles) {
       const btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'profile-item' + (profile.id === selectedId ? ' active' : '');
+      btn.className = `profile-item${profile.id === selectedId ? ' active' : ''}`;
       btn.textContent = profile.label;
       btn.addEventListener('click', () => {
         selectedId = profile.id;
         renderList();
         fillForm(profile);
-        showStatus('');
+        showAppStatus('');
       });
       els.list.appendChild(btn);
     }
@@ -143,12 +149,114 @@
     }
   }
 
+  function renderAuthView() {
+    els.appView.hidden = true;
+    els.authView.hidden = false;
+    els.setupForm.hidden = true;
+    els.unlockForm.hidden = true;
+
+    if (!vaultStatus) {
+      els.authTitle.textContent = 'Nacitavam bezpecnostne nastavenia';
+      els.authDescription.textContent = 'Kontrolujem, ci uz mas vytvoreny sifrovany vault.';
+      return;
+    }
+
+    if (!vaultStatus.hasVault) {
+      els.authTitle.textContent = 'Vytvor sifrovany vault';
+      els.authDescription.textContent = vaultStatus.hasLegacyPlain
+        ? 'Nasli sa starsie nezasifrovane profily. Nastav heslo a premigrujeme ich do sifrovaneho vaultu.'
+        : 'Nastav heslo, ktorym sa budu profily sifrovat pred ulozenim.';
+      els.setupForm.hidden = false;
+      return;
+    }
+
+    els.authTitle.textContent = 'Vault je zamknuty';
+    els.authDescription.textContent = 'Zadaj heslo, aby sa profily nacitali do bezpecnej relacie iba v pamati rozsirrenia.';
+    els.unlockForm.hidden = false;
+  }
+
+  function renderAppView() {
+    els.authView.hidden = true;
+    els.appView.hidden = false;
+    renderList();
+    fillForm(getSelectedProfile());
+  }
+
+  async function refreshVaultState() {
+    const response = await sendRuntimeMessage({ type: 'GET_VAULT_STATUS' });
+    vaultStatus = response.status;
+
+    if (vaultStatus.unlocked) {
+      const profilesResponse = await sendRuntimeMessage({ type: 'GET_PROFILES' });
+      profiles = Array.isArray(profilesResponse.profiles) ? profilesResponse.profiles : [];
+      selectFirstIfNeeded();
+      renderAppView();
+      return;
+    }
+
+    profiles = [];
+    selectedId = null;
+    unlockedPassphrase = '';
+    renderAuthView();
+  }
+
+  async function onSetupSubmit(event) {
+    event.preventDefault();
+
+    const passphrase = els.setupPassphrase.value;
+    const confirm = els.setupPassphraseConfirm.value;
+
+    if (passphrase.length < 8) {
+      showAuthStatus('Heslo musi mat aspon 8 znakov.', true);
+      return;
+    }
+
+    if (passphrase !== confirm) {
+      showAuthStatus('Hesla sa nezhoduju.', true);
+      return;
+    }
+
+    showAuthStatus('Vytvaram sifrovany vault...');
+
+    try {
+      await sendRuntimeMessage({ type: 'INIT_VAULT', passphrase });
+      unlockedPassphrase = passphrase;
+      els.setupForm.reset();
+      showAuthStatus('Vault bol vytvoreny a odomknuty.');
+      await refreshVaultState();
+    } catch (error) {
+      showAuthStatus(String(error.message || error), true);
+    }
+  }
+
+  async function onUnlockSubmit(event) {
+    event.preventDefault();
+    const passphrase = els.unlockPassphrase.value;
+
+    if (!passphrase) {
+      showAuthStatus('Zadaj heslo pre odomknutie.', true);
+      return;
+    }
+
+    showAuthStatus('Odomykam vault...');
+
+    try {
+      await sendRuntimeMessage({ type: 'UNLOCK_VAULT', passphrase });
+      unlockedPassphrase = passphrase;
+      els.unlockForm.reset();
+      showAuthStatus('');
+      await refreshVaultState();
+    } catch (error) {
+      showAuthStatus('Odomknutie zlyhalo. Skontroluj heslo.', true);
+    }
+  }
+
   function onAddProfile() {
     selectedId = null;
     fillForm(null);
     els.label.focus();
     renderList();
-    showStatus('Nový profil: vyplň údaje a klikni Uložiť.');
+    showAppStatus('Novy profil: vypln udaje a klikni Ulozit.');
   }
 
   async function onSaveProfile(event) {
@@ -156,62 +264,101 @@
 
     const label = String(els.label.value || '').trim();
     if (!label) {
-      showStatus('Názov profilu je povinný.', true);
+      showAppStatus('Nazov profilu je povinny.', true);
       els.label.focus();
       return;
     }
 
-    const data = collectFormData();
-
-    if (!selectedId) {
-      const id = generateId(label);
-      profiles.push({ id, label, data });
-      selectedId = id;
-    } else {
-      const idx = profiles.findIndex((p) => p.id === selectedId);
-      if (idx === -1) {
-        profiles.push({ id: selectedId, label, data });
-      } else {
-        profiles[idx] = { ...profiles[idx], label, data };
-      }
+    if (!unlockedPassphrase) {
+      showAppStatus('Vault uz nie je odomknuty. Odomkni ho znova.', true);
+      await refreshVaultState();
+      return;
     }
 
-    await saveProfiles();
-    renderList();
-    showStatus('Profil bol uložený.');
+    const profile = {
+      id: selectedId || generateId(label),
+      label,
+      data: collectFormData()
+    };
+
+    try {
+      const response = await sendRuntimeMessage({
+        type: 'SAVE_PROFILE',
+        profile,
+        passphrase: unlockedPassphrase
+      });
+
+      profiles = Array.isArray(response.profiles) ? response.profiles : profiles;
+      selectedId = profile.id;
+      renderList();
+      fillForm(getSelectedProfile());
+      showAppStatus('Profil bol zasifrovane ulozeny.');
+    } catch (error) {
+      unlockedPassphrase = '';
+      showAppStatus(String(error.message || error), true);
+      await refreshVaultState();
+    }
   }
 
   async function onDeleteProfile() {
     const profile = getSelectedProfile();
     if (!profile) {
-      showStatus('Najprv vyber profil na zmazanie.', true);
+      showAppStatus('Najprv vyber profil na zmazanie.', true);
       return;
     }
 
-    profiles = profiles.filter((p) => p.id !== profile.id);
-    selectedId = profiles[0]?.id || null;
-    await saveProfiles();
+    if (!unlockedPassphrase) {
+      showAppStatus('Vault uz nie je odomknuty. Odomkni ho znova.', true);
+      await refreshVaultState();
+      return;
+    }
 
-    renderList();
-    fillForm(getSelectedProfile());
-    showStatus('Profil bol zmazaný.');
-  }
-
-  async function init() {
     try {
-      await loadProfiles();
-      selectFirstIfNeeded();
+      const response = await sendRuntimeMessage({
+        type: 'DELETE_PROFILE',
+        id: profile.id,
+        passphrase: unlockedPassphrase
+      });
+
+      profiles = Array.isArray(response.profiles) ? response.profiles : [];
+      selectedId = profiles[0]?.id || null;
       renderList();
       fillForm(getSelectedProfile());
-      showStatus('');
+      showAppStatus('Profil bol odstraneny z vaultu.');
     } catch (error) {
-      showStatus(`Chyba pri načítaní: ${String(error)}`, true);
+      unlockedPassphrase = '';
+      showAppStatus(String(error.message || error), true);
+      await refreshVaultState();
     }
   }
 
+  async function onLockVault() {
+    try {
+      await sendRuntimeMessage({ type: 'LOCK_VAULT' });
+      unlockedPassphrase = '';
+      showAppStatus('');
+      await refreshVaultState();
+    } catch (error) {
+      showAppStatus(String(error.message || error), true);
+    }
+  }
+
+  async function init() {
+    renderAuthView();
+
+    try {
+      await refreshVaultState();
+    } catch (error) {
+      showAuthStatus(String(error.message || error), true);
+    }
+  }
+
+  els.setupForm.addEventListener('submit', onSetupSubmit);
+  els.unlockForm.addEventListener('submit', onUnlockSubmit);
   els.addBtn.addEventListener('click', onAddProfile);
   els.form.addEventListener('submit', onSaveProfile);
   els.delBtn.addEventListener('click', onDeleteProfile);
+  els.lockBtn.addEventListener('click', onLockVault);
 
   init();
 })();
