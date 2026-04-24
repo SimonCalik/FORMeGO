@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FORMeGO | GitHub Pages prezentácia</title>
+  <meta name="description" content="Reprezentačná stránka rozšírenia FORMeGO pre automatické vypĺňanie formulárov." />
+  <link rel="icon" type="image/png" href="assets/logo_2.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <nav class="topbar">
+        <img class="brand-lockup" src="assets/logo_s_nazvom.png" alt="FORMeGO logo" />
+        <div class="topbar-links">
+          <a href="#funkcie">Funkcie</a>
+          <a href="#ukazky">Ukážky</a>
+          <a href="#instalacia">Inštalácia</a>
+          <a href="#kontakt">Kontakt</a>
+        </div>
+      </nav>
+
+      <section class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Chrome / Edge rozšírenie</p>
+          <h1>FORMeGO</h1>
+          <p class="hero-text">
+            FORMeGO je rozšírenie pre prehliadač, ktoré zrýchľuje vypĺňanie formulárov pomocou uložených profilov.
+            Hodí sa pri registráciách, objednávkach a opakovanom zadávaní osobných alebo kontaktných údajov.
+          </p>
+
+          <div class="cta-row">
+            <a class="primary-btn" href="https://github.com/SimonCalik/FORMeGO/archive/refs/heads/main.zip">⬇ Stiahnuť projekt</a>
+            <a class="secondary-btn" href="https://github.com/SimonCalik/FORMeGO">Chrome / Edge zdroják</a>
+          </div>
+
+          <div class="meta-pills">
+            <span>🧩 Browser extension</span>
+            <span>🔐 Šifrovaný vault profilov</span>
+            <span>⚡ Form autofill</span>
+          </div>
+        </div>
+
+        <div class="hero-device">
+          <div class="laptop-frame">
+            <div class="laptop-screen">
+              <div class="screen-topline">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="address-bar">FORMeGO | nastavenia profilu</span>
+              </div>
+              <div class="screen-layout">
+                <aside class="mini-sidebar">
+                  <img class="mini-logo" src="assets/logo_2.png" alt="FORMeGO" />
+                  <div class="mini-pill">Vault odomknutý</div>
+                  <div class="mini-profile active">Ja</div>
+                  <div class="mini-profile">Sestra</div>
+                  <div class="mini-profile">Tato</div>
+                </aside>
+                <section class="mini-editor">
+                  <div class="mini-section">
+                    <div class="mini-section-title">Identita</div>
+                    <div class="mini-input-grid">
+                      <div class="mini-input">Meno</div>
+                      <div class="mini-input">Priezvisko</div>
+                      <div class="mini-input">Email</div>
+                      <div class="mini-input">Telefón</div>
+                    </div>
+                  </div>
+                  <div class="mini-section">
+                    <div class="mini-section-title">Adresa</div>
+                    <div class="mini-input-grid">
+                      <div class="mini-input wide">Adresa</div>
+                      <div class="mini-input">Mesto</div>
+                      <div class="mini-input">PSČ</div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+            <div class="laptop-base"></div>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section id="funkcie" class="content-section">
+        <div class="section-head">
+          <p class="eyebrow">Čo aplikácia vie</p>
+          <h2>Hlavné funkcionality</h2>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>👤 Viac profilov</h3>
+            <p>Uloženie viacerých kont ako Ja, sestra, tato alebo pracovný profil.</p>
+          </article>
+          <article class="feature-card">
+            <h3>📝 Vyplnenie formulára na jeden klik</h3>
+            <p>Po výbere profilu doplní relevantné polia v rámci formulára automaticky.</p>
+          </article>
+          <article class="feature-card">
+            <h3>🔐 Šifrovaný vault</h3>
+            <p>Citlivé údaje sa držia v šifrovanom uloženisku a pri práci sa odomykajú heslom.</p>
+          </article>
+          <article class="feature-card">
+            <h3>📍 Heuristické mapovanie polí</h3>
+            <p>Rozpozná meno, e-mail, telefón, adresu, mesto, PSČ, firmu a ďalšie polia.</p>
+          </article>
+          <article class="feature-card">
+            <h3>🧠 Reakcia na moderné formuláre</h3>
+            <p>Používa native value setter a input/change eventy kvôli React a Vue kompatibilite.</p>
+          </article>
+          <article class="feature-card">
+            <h3>🛠 Developer mode inštalácia</h3>
+            <p>Rozšírenie sa dá nahrať lokálne cez Chrome alebo Edge bez publikovania v store.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="ukazky" class="content-section">
+        <div class="section-head">
+          <p class="eyebrow">Viacero ukážok produktu</p>
+          <h2>Produkt zasadený do zariadení</h2>
+        </div>
+
+        <div class="gallery-grid">
+          <article class="device-card">
+            <div class="device-label">Notebook</div>
+            <div class="device-mock laptop-small">
+              <div class="device-screen">
+                <div class="screen-caption">Options stránka</div>
+                <div class="mock-panel">
+                  <div class="mock-row long"></div>
+                  <div class="mock-row"></div>
+                  <div class="mock-row"></div>
+                  <div class="mock-row long"></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="device-card">
+            <div class="device-label">Mobil</div>
+            <div class="device-mock phone">
+              <div class="device-screen">
+                <div class="screen-caption">Popover pri formulári</div>
+                <div class="popover-preview">
+                  <div class="popover-title">Vyber profil</div>
+                  <div class="popover-item active">Ja</div>
+                  <div class="popover-item">Sestra</div>
+                  <div class="popover-item">Tato</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="device-card">
+            <div class="device-label">Tablet</div>
+            <div class="device-mock tablet">
+              <div class="device-screen placeholder-screen">
+                <strong>NEVIEM ČO SEM DAŤ</strong>
+                <span>Sem doplň reálny screenshot rozšírenia, keď ho budeš mať.</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="instalacia" class="content-section install-section">
+        <div class="section-head">
+          <p class="eyebrow">Stiahnutie a spustenie</p>
+          <h2>Ako rozšírenie nainštalovať</h2>
+        </div>
+
+        <div class="install-grid">
+          <article class="install-card">
+            <h3>🧩 Chrome / Edge</h3>
+            <p>Rozšírenie zatiaľ vyžaduje ručnú inštaláciu cez Developer mode.</p>
+            <a class="primary-btn" href="https://github.com/SimonCalik/FORMeGO/archive/refs/heads/main.zip">Stiahnuť ZIP projektu</a>
+          </article>
+
+          <article class="install-card">
+            <h3>📋 Návod</h3>
+            <ol class="install-steps">
+              <li>Stiahni alebo naklonuj repozitár.</li>
+              <li>Otvor <code>chrome://extensions</code> alebo <code>edge://extensions</code>.</li>
+              <li>Zapni <code>Developer mode</code>.</li>
+              <li>Klikni na <code>Load unpacked</code>.</li>
+              <li>Vyber priečinok <code>autofill-profiles</code>.</li>
+            </ol>
+          </article>
+
+          <article class="install-card">
+            <h3>🌐 Spustenie webovej aplikácie</h3>
+            <p>NEVIEM ČO SEM DAŤ</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="kontakt" class="content-section contact-section">
+        <div class="section-head">
+          <p class="eyebrow">Kontakt na vývojára</p>
+          <h2>Napíš mi</h2>
+        </div>
+
+        <div class="contact-grid">
+          <article class="contact-card">
+            <h3>📧 E-mail</h3>
+            <p>NEVIEM ČO SEM DAŤ</p>
+          </article>
+          <article class="contact-card">
+            <h3>💬 Iný kontakt</h3>
+            <p>NEVIEM ČO SEM DAŤ</p>
+          </article>
+          <article class="contact-card">
+            <h3>🧑‍💻 GitHub</h3>
+            <p><a href="https://github.com/SimonCalik/FORMeGO">github.com/SimonCalik/FORMeGO</a></p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
