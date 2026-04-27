@@ -1,0 +1,12 @@
+﻿Name,As (role),I want (goal),Kategória,Status,Technické kritéria (dobrovoľné),so that (benefit
+Vytvorenie nového profilu,Ako používateľ,chcem vytvoriť nový profil,Must Have,Done,,aby som vedel oddeliť osobné údaje ľudí
+Úprava údajov profilu,Ako používateľ,chcem editovať osobné údaje profilov,Must Have,Done,,aby som vedel opraviť chybné info
+Odstránenie profilu,Ako používateľ,chcem vymazať profil,Must Have,Done,,"aby som odstránil údaje, ktoré už nepotrebujem"
+Zobrazenie zoznamu profilov,Ako používateľ,chcem vidieť zoznam všetkých profilov,Must Have,Done,,aby som si mohol rýchlo vybrať správny profil
+Výber profilu pri vypĺňaní formulára,Ako používateľ,chcem vybrať profil priamo pri vypĺňaní formulára,Must Have,Done,,aby som mohol rýchlo doplniť údaje bez ručného písania
+Rozpoznávanie polí formulára,Ako používateľ,chcem aby rozšírenie rozpoznávalo polia formulára,Must Have,Done,,aby vedelo správne priradiť údaje z profilu
+Ukladanie firemných údajov,Ako používateľ,chcem ukladať aj firemné údaje,Should Have,Done,,aby som mohol vyplniť firemné formuláre
+Podpora viacerých kontaktov,Ako používateľ,chcem ukladať viac kontaktov (napr. druhý email alebo telefón),Should Have,Done,,aby som mal flexibilitu pri vypĺňaní formulárov
+Poznámka k profilu,Ako používateľ,chcem pridať poznámku k profilu,Nice To Have,Done,,aby som si zapamätal na čo profil používam
+Vybranie konkrétnej informácie,Ako používateľ,chcem vybrať konkrétnu informáciu ktorú chcem vyplniť vo formulári,Should Have,Not started,,aby som mohol lepšie vyplniť formulár
+Viditeľnosť vypĺňaných informácií pred vyplnením,Ako používateľ,chcem vidieť aké informácie sa vyplnia do formulára,Nice To Have,Not started,,aby som videl čo reálne doplním

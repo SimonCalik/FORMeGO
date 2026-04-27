@@ -1,0 +1,384 @@
+{"kind":"shape","slide":1,"role":"bg glow","bbox":[-80,-120,420,420]}
+{"kind":"shape","slide":1,"role":"bg glow","bbox":[960,-110,360,360]}
+{"kind":"shape","slide":1,"role":"bg glow","bbox":[860,500,340,220]}
+{"kind":"shape","slide":1,"role":"hero shell","bbox":[54,48,1172,624]}
+{"kind":"shape","slide":1,"role":"hero accent","bbox":[54,48,14,624]}
+{"kind":"image","slide":1,"role":"logo","path":"C:\\Users\\simon\\Desktop\\Projektový manažment\\Profile_autofiller\\docs\\assets\\logo_s_nazvom.png","bbox":[94,86,250,66]}
+{"kind":"shape","slide":1,"role":"cover title","bbox":[94,182,420,70]}
+{"kind":"textbox","slide":1,"role":"cover title","text":"FORMeGO","bbox":[94,182,420,70]}
+{"kind":"shape","slide":1,"role":"cover subtitle","bbox":[96,260,450,76]}
+{"kind":"textbox","slide":1,"role":"cover subtitle","text":"Rozšírenie pre rýchle vypĺňanie formulárov cez uložené profily.","bbox":[96,260,450,76]}
+{"kind":"shape","slide":1,"role":"pill","bbox":[96,354,150,38]}
+{"kind":"textbox","slide":1,"role":"pill","text":"Manifest V3","bbox":[96,354,150,38]}
+{"kind":"shape","slide":1,"role":"pill","bbox":[258,354,180,38]}
+{"kind":"textbox","slide":1,"role":"pill","text":"Šifrovaný vault","bbox":[258,354,180,38]}
+{"kind":"shape","slide":1,"role":"pill","bbox":[450,354,166,38]}
+{"kind":"textbox","slide":1,"role":"pill","text":"Chrome + Edge","bbox":[450,354,166,38]}
+{"kind":"shape","slide":1,"role":"meta panel","bbox":[94,454,460,144]}
+{"kind":"shape","slide":1,"role":"meta panel accent","bbox":[94,454,8,144]}
+{"kind":"shape","slide":1,"role":"meta label","bbox":[120,482,100,24]}
+{"kind":"textbox","slide":1,"role":"meta label","text":"Autor","bbox":[120,482,100,24]}
+{"kind":"shape","slide":1,"role":"meta value","bbox":[120,510,180,34]}
+{"kind":"textbox","slide":1,"role":"meta value","text":"Simon Čalík","bbox":[120,510,180,34]}
+{"kind":"shape","slide":1,"role":"meta label","bbox":[320,482,100,24]}
+{"kind":"textbox","slide":1,"role":"meta label","text":"Predmet","bbox":[320,482,100,24]}
+{"kind":"shape","slide":1,"role":"meta value","bbox":[320,510,210,34]}
+{"kind":"textbox","slide":1,"role":"meta value","text":"Projektový manažment","bbox":[320,510,210,34]}
+{"kind":"shape","slide":1,"role":"meta detail","bbox":[120,552,160,26]}
+{"kind":"textbox","slide":1,"role":"meta detail","text":"Rok 2026","bbox":[120,552,160,26]}
+{"kind":"shape","slide":1,"role":"showcase panel","bbox":[640,92,520,510]}
+{"kind":"shape","slide":1,"role":"showcase frame","bbox":[674,124,378,242]}
+{"kind":"image","slide":1,"role":"cover screenshot","path":"C:\\Users\\simon\\Desktop\\Projektový manažment\\Profile_autofiller\\docs\\assets\\shot-1.png","bbox":[686,136,354,218]}
+{"kind":"shape","slide":1,"role":"showcase phone","bbox":[920,300,208,256]}
+{"kind":"image","slide":1,"role":"cover screenshot","path":"C:\\Users\\simon\\Desktop\\Projektový manažment\\Profile_autofiller\\docs\\assets\\shot-2.png","bbox":[932,312,184,232]}
+{"kind":"shape","slide":1,"role":"showcase mini","bbox":[706,392,238,150]}
+{"kind":"image","slide":1,"role":"cover screenshot","path":"C:\\Users\\simon\\Desktop\\Projektový manažment\\Profile_autofiller\\docs\\assets\\shot-6.png","bbox":[718,404,214,126]}
+{"kind":"shape","slide":2,"role":"bg glow","bbox":[-80,-120,420,420]}
+{"kind":"shape","slide":2,"role":"bg glow","bbox":[960,-110,360,360]}
+{"kind":"shape","slide":2,"role":"bg glow","bbox":[860,500,340,220]}
+{"kind":"shape","slide":2,"role":"kicker","bbox":[72,42,260,22]}
+{"kind":"textbox","slide":2,"role":"kicker","text":"PREČO? KTO? ČO?","bbox":[72,42,260,22]}
+{"kind":"shape","slide":2,"role":"title","bbox":[72,74,760,72]}
+{"kind":"textbox","slide":2,"role":"title","text":"Problém, cieľový používateľ a riešenie","bbox":[72,74,760,72]}
+{"kind":"shape","slide":2,"role":"subtitle","bbox":[74,146,820,44]}
+{"kind":"textbox","slide":2,"role":"subtitle","text":"Jeden slide, ktorý vysvetlí hodnotu produktu bez dlhého rozprávania.","bbox":[74,146,820,44]}
+{"kind":"shape","slide":2,"role":"card Prečo?","bbox":[72,244,326,332]}
+{"kind":"shape","slide":2,"role":"card Prečo? accent","bbox":[72,244,8,332]}
+{"kind":"shape","slide":2,"role":"card eyebrow","bbox":[100,272,120,28]}
+{"kind":"textbox","slide":2,"role":"card eyebrow","text":"Prečo?","bbox":[100,272,120,28]}
+{"kind":"shape","slide":2,"role":"card title","bbox":[100,312,268,82]}
+{"kind":"textbox","slide":2,"role":"card title","text":"Formuláre sú otravne opakované","bbox":[100,312,268,82]}
+{"kind":"shape","slide":2,"role":"card body","bbox":[100,410,268,124]}
+{"kind":"textbox","slide":2,"role":"card body","text":"Meno, kontakt, adresa či firemné údaje sa vypisujú stále dokola. FORMeGO skracuje tento opakovaný krok na jeden výber profilu.","bbox":[100,410,268,124]}
+{"kind":"shape","slide":2,"role":"card Kto?","bbox":[438,244,326,332]}
+{"kind":"shape","slide":2,"role":"card Kto? accent","bbox":[438,244,8,332]}
+{"kind":"shape","slide":2,"role":"card eyebrow","bbox":[466,272,120,28]}
+{"kind":"textbox","slide":2,"role":"card eyebrow","text":"Kto?","bbox":[466,272,120,28]}
+{"kind":"shape","slide":2,"role":"card title","bbox":[466,312,268,82]}
+{"kind":"textbox","slide":2,"role":"card title","text":"Študenti, rodičia, freelanceri, firmy","bbox":[466,312,268,82]}
+{"kind":"shape","slide":2,"role":"card body","bbox":[466,410,268,124]}
+{"kind":"textbox","slide":2,"role":"card body","text":"Každý, kto pracuje s viacerými identitami alebo kontaktmi. Typické profily: ja, rodina, pracovný kontakt, firma.","bbox":[466,410,268,124]}
+{"kind":"shape","slide":2,"role":"card Čo?","bbox":[804,244,326,332]}
+{"kind":"shape","slide":2,"role":"card Čo? accent","bbox":[804,244,8,332]}
+{"kind":"shape","slide":2,"role":"card eyebrow","bbox":[832,272,120,28]}
+{"kind":"textbox","slide":2,"role":"card eyebrow","text":"Čo?","bbox":[832,272,120,28]}
+{"kind":"shape","slide":2,"role":"card title","bbox":[832,312,268,82]}
+{"kind":"textbox","slide":2,"role":"card title","text":"Chrome/Edge extension s profilmi","bbox":[832,312,268,82]}
+{"kind":"shape","slide":2,"role":"card body","bbox":[832,410,268,124]}
+{"kind":"textbox","slide":2,"role":"card body","text":"Rozšírenie zobrazí popover pri formulári, používateľ vyberie profil a systém doplní relevantné polia v rámci formulára.","bbox":[832,410,268,124]}
+{"kind":"shape","slide":2,"role":"pill","bbox":[72,616,366,40]}
+{"kind":"textbox","slide":2,"role":"pill","text":"1 klik namiesto ručného vypisovania","bbox":[72,616,366,40]}
+{"kind":"shape","slide":2,"role":"pill","bbox":[456,616,404,40]}
+{"kind":"textbox","slide":2,"role":"pill","text":"Viac profilov + heuristické mapovanie polí","bbox":[456,616,404,40]}
+{"kind":"shape","slide":2,"role":"pill","bbox":[878,616,328,40]}
+{"kind":"textbox","slide":2,"role":"pill","text":"Lokálne rozšírenie bez zložitej inštalácie","bbox":[878,616,328,40]}
+{"kind":"shape","slide":3,"role":"bg glow","bbox":[-80,-120,420,420]}
+{"kind":"shape","slide":3,"role":"bg glow","bbox":[960,-110,360,360]}
+{"kind":"shape","slide":3,"role":"bg glow","bbox":[860,500,340,220]}
+{"kind":"shape","slide":3,"role":"kicker","bbox":[72,42,260,22]}
+{"kind":"textbox","slide":3,"role":"kicker","text":"VÝSLEDOK DOTAZNÍKU","bbox":[72,42,260,22]}
+{"kind":"shape","slide":3,"role":"title","bbox":[72,74,760,72]}
+{"kind":"textbox","slide":3,"role":"title","text":"Validácia záujmu o produkt","bbox":[72,74,760,72]}
+{"kind":"shape","slide":3,"role":"subtitle","bbox":[74,146,820,44]}
+{"kind":"textbox","slide":3,"role":"subtitle","text":"Dotazník naznačil, že problém je reálny a ľudia by takéto rozšírenie chceli používať.","bbox":[74,146,820,44]}
+{"kind":"shape","slide":3,"role":"survey panel","bbox":[72,224,560,406]}
+{"kind":"image","slide":3,"role":"survey screenshot","path":"C:\\Users\\simon\\Desktop\\Projektový manažment\\Profile_autofiller\\docs\\Export_notion\\image 5.png","bbox":[88,240,528,374]}
+{"kind":"shape","slide":3,"role":"metrics panel","bbox":[666,224,542,406]}
+{"kind":"shape","slide":3,"role":"small stat","bbox":[700,252,150,26]}
+{"kind":"textbox","slide":3,"role":"small stat","text":"7 odpovedí","bbox":[700,252,150,26]}
+{"kind":"shape","slide":3,"role":"metric považuje nápad za dobrý","bbox":[700,300,224,132]}
+{"kind":"shape","slide":3,"role":"metric považuje nápad za dobrý accent","bbox":[700,300,8,132]}
+{"kind":"shape","slide":3,"role":"metric value","bbox":[718,316,188,42]}
+{"kind":"textbox","slide":3,"role":"metric value","text":"100 %","bbox":[718,316,188,42]}
+{"kind":"shape","slide":3,"role":"metric label","bbox":[718,366,188,44]}
+{"kind":"textbox","slide":3,"role":"metric label","text":"považuje nápad za dobrý","bbox":[718,366,188,44]}
+{"kind":"shape","slide":3,"role":"metric by chcelo takúto custom extension","bbox":[956,300,224,132]}
+{"kind":"shape","slide":3,"role":"metric by chcelo takúto custom extension accent","bbox":[956,300,8,132]}
+{"kind":"shape","slide":3,"role":"metric value","bbox":[974,316,188,42]}
+{"kind":"textbox","slide":3,"role":"metric value","text":"100 %","bbox":[974,316,188,42]}
+{"kind":"shape","slide":3,"role":"metric label","bbox":[974,366,188,44]}
+{"kind":"textbox","slide":3,"role":"metric label","text":"by chcelo takúto custom extension","bbox":[974,366,188,44]}
+{"kind":"shape","slide":3,"role":"metric doteraz nepoužilo podobnú alternatívu","bbox":[700,466,224,132]}
+{"kind":"shape","slide":3,"role":"metric doteraz nepoužilo podobnú alternatívu accent","bbox":[700,466,8,132]}
+{"kind":"shape","slide":3,"role":"metric value","bbox":[718,482,188,42]}
+{"kind":"textbox","slide":3,"role":"metric value","text":"57,1 %","bbox":[718,482,188,42]}
+{"kind":"shape","slide":3,"role":"metric label","bbox":[718,532,188,44]}
+{"kind":"textbox","slide":3,"role":"metric label","text":"doteraz nepoužilo podobnú alternatívu","bbox":[718,532,188,44]}
+{"kind":"shape","slide":3,"role":"metric už pozná alebo používa podobný spôsob","bbox":[956,466,224,132]}
+{"kind":"shape","slide":3,"role":"metric už pozná alebo používa podobný spôsob accent","bbox":[956,466,8,132]}
+{"kind":"shape","slide":3,"role":"metric value","bbox":[974,482,188,42]}
+{"kind":"textbox","slide":3,"role":"metric value","text":"42,9 %","bbox":[974,482,188,42]}
+{"kind":"shape","slide":3,"role":"metric label","bbox":[974,532,188,44]}
+{"kind":"textbox","slide":3,"role":"metric label","text":"už pozná alebo používa podobný spôsob","bbox":[974,532,188,44]}
+{"kind":"shape","slide":3,"role":"footer insight","bbox":[72,648,1134,28]}
+{"kind":"textbox","slide":3,"role":"footer insight","text":"Záver: produkt má jasný use-case a nízky prah pochopenia. Ľudia presne vedia, na čo by ho použili.","bbox":[72,648,1134,28]}
+{"kind":"shape","slide":4,"role":"bg glow","bbox":[-80,-120,420,420]}
+{"kind":"shape","slide":4,"role":"bg glow","bbox":[960,-110,360,360]}
+{"kind":"shape","slide":4,"role":"bg glow","bbox":[860,500,340,220]}
+{"kind":"shape","slide":4,"role":"kicker","bbox":[72,42,260,22]}
+{"kind":"textbox","slide":4,"role":"kicker","text":"MVP","bbox":[72,42,260,22]}
+{"kind":"shape","slide":4,"role":"title","bbox":[72,74,760,72]}
+{"kind":"textbox","slide":4,"role":"title","text":"Čo tvorí jadro produktu","bbox":[72,74,760,72]}
+{"kind":"shape","slide":4,"role":"subtitle","bbox":[74,146,820,44]}
+{"kind":"textbox","slide":4,"role":"subtitle","text":"Fokus bol na funkciách, ktoré dávajú používateľovi okamžitú hodnotu už v prvej verzii.","bbox":[74,146,820,44]}
+{"kind":"shape","slide":4,"role":"done column","bbox":[72,220,554,426]}
+{"kind":"shape","slide":4,"role":"done column accent","bbox":[72,220,8,426]}
+{"kind":"shape","slide":4,"role":"column title","bbox":[100,252,240,34]}
+{"kind":"textbox","slide":4,"role":"column title","text":"Hotové jadro MVP","bbox":[100,252,240,34]}
+{"kind":"shape","slide":4,"role":"bullet","bbox":[102,308,18,18]}
+{"kind":"shape","slide":4,"role":"done item","bbox":[134,300,448,30]}
+{"kind":"textbox","slide":4,"role":"done item","text":"vytvorenie, úprava a odstránenie profilu","bbox":[134,300,448,30]}
+{"kind":"shape","slide":4,"role":"bullet","bbox":[102,358,18,18]}
+{"kind":"shape","slide":4,"role":"done item","bbox":[134,350,448,30]}
+{"kind":"textbox","slide":4,"role":"done item","text":"zoznam profilov v options stránke","bbox":[134,350,448,30]}
+{"kind":"shape","slide":4,"role":"bullet","bbox":[102,408,18,18]}
+{"kind":"shape","slide":4,"role":"done item","bbox":[134,400,448,30]}
+{"kind":"textbox","slide":4,"role":"done item","text":"výber profilu priamo pri formulári","bbox":[134,400,448,30]}
+{"kind":"shape","slide":4,"role":"bullet","bbox":[102,458,18,18]}
+{"kind":"shape","slide":4,"role":"done item","bbox":[134,450,448,30]}
+{"kind":"textbox","slide":4,"role":"done item","text":"rozpoznávanie polí formulára","bbox":[134,450,448,30]}
+{"kind":"shape","slide":4,"role":"bullet","bbox":[102,508,18,18]}
+{"kind":"shape","slide":4,"role":"done item","bbox":[134,500,448,30]}
+{"kind":"textbox","slide":4,"role":"done item","text":"podpora firemných údajov a viacerých kontaktov","bbox":[134,500,448,30]}
+{"kind":"shape","slide":4,"role":"bullet","bbox":[102,558,18,18]}
+{"kind":"shape","slide":4,"role":"done item","bbox":[134,550,448,30]}
+{"kind":"textbox","slide":4,"role":"done item","text":"poznámka k profilu a šifrovaný vault","bbox":[134,550,448,30]}
+{"kind":"shape","slide":4,"role":"pill","bbox":[100,572,220,40]}
+{"kind":"textbox","slide":4,"role":"pill","text":"8 / 10 user stories = Done","bbox":[100,572,220,40]}
+{"kind":"shape","slide":4,"role":"next column","bbox":[654,220,554,426]}
+{"kind":"shape","slide":4,"role":"next column accent","bbox":[654,220,8,426]}
+{"kind":"shape","slide":4,"role":"column title","bbox":[682,252,250,34]}
+{"kind":"textbox","slide":4,"role":"column title","text":"Ďalší krok po MVP","bbox":[682,252,250,34]}
+{"kind":"shape","slide":4,"role":"next item","bbox":[684,304,486,52]}
+{"kind":"shape","slide":4,"role":"next item text","bbox":[706,317,442,24]}
+{"kind":"textbox","slide":4,"role":"next item text","text":"vybrať len konkrétnu informáciu namiesto celého formulára","bbox":[706,317,442,24]}
+{"kind":"shape","slide":4,"role":"next item","bbox":[684,376,486,52]}
+{"kind":"shape","slide":4,"role":"next item text","bbox":[706,389,442,24]}
+{"kind":"textbox","slide":4,"role":"next item text","text":"zobraziť vopred, čo sa presne vyplní","bbox":[706,389,442,24]}
+{"kind":"shape","slide":4,"role":"next item","bbox":[684,448,486,52]}
+{"kind":"shape","slide":4,"role":"next item text","bbox":[706,461,442,24]}
+{"kind":"textbox","slide":4,"role":"next item text","text":"ďalšie bezpečnostné vrstvy pri citlivých údajoch","bbox":[706,461,442,24]}
+{"kind":"shape","slide":4,"role":"next item","bbox":[684,520,486,52]}
+{"kind":"shape","slide":4,"role":"next item text","bbox":[706,533,442,24]}
+{"kind":"textbox","slide":4,"role":"next item text","text":"rozšírenie heuristík pre komplikované formuláre","bbox":[706,533,442,24]}
+{"kind":"shape","slide":5,"role":"bg glow","bbox":[-80,-120,420,420]}
+{"kind":"shape","slide":5,"role":"bg glow","bbox":[960,-110,360,360]}
+{"kind":"shape","slide":5,"role":"bg glow","bbox":[860,500,340,220]}
+{"kind":"shape","slide":5,"role":"kicker","bbox":[72,42,260,22]}
+{"kind":"textbox","slide":5,"role":"kicker","text":"TUNEL","bbox":[72,42,260,22]}
+{"kind":"shape","slide":5,"role":"title","bbox":[72,74,760,72]}
+{"kind":"textbox","slide":5,"role":"title","text":"Od prezentačnej stránky po stiahnutie","bbox":[72,74,760,72]}
+{"kind":"shape","slide":5,"role":"subtitle","bbox":[74,146,820,44]}
+{"kind":"textbox","slide":5,"role":"subtitle","text":"Cieľom je, aby používateľ vedel pochopiť produkt, dostať sa k repozitáru a spustiť rozšírenie bez chaosu.","bbox":[74,146,820,44]}
+{"kind":"shape","slide":5,"role":"step 1","bbox":[78,246,244,364]}
+{"kind":"shape","slide":5,"role":"step 1 accent","bbox":[78,246,8,364]}
+{"kind":"shape","slide":5,"role":"step title","bbox":[96,268,204,28]}
+{"kind":"textbox","slide":5,"role":"step title","text":"1. GitHub Pages","bbox":[96,268,204,28]}
+{"kind":"shape","slide":5,"role":"step image frame","bbox":[94,310,212,160]}
+{"kind":"shape","slide":5,"role":"browser mock","bbox":[102,322,196,136]}
+{"kind":"shape","slide":5,"role":"browser topbar","bbox":[102,322,196,20]}
+{"kind":"shape","slide":5,"role":"browser dot","bbox":[112,328,8,8]}
+{"kind":"shape","slide":5,"role":"browser dot","bbox":[126,328,8,8]}
+{"kind":"shape","slide":5,"role":"browser dot","bbox":[140,328,8,8]}
+{"kind":"image","slide":5,"role":"step image","path":"C:\\Users\\simon\\Desktop\\Projektový manažment\\Profile_autofiller\\docs\\assets\\logo_s_nazvom.png","bbox":[118,352,122,30]}
+{"kind":"shape","slide":5,"role":"browser mock title","bbox":[116,390,148,26]}
+{"kind":"textbox","slide":5,"role":"browser mock title","text":"Automatické vypĺňanie formulárov","bbox":[116,390,148,26]}
+{"kind":"shape","slide":5,"role":"browser mock text","bbox":[116,420,144,18]}
+{"kind":"textbox","slide":5,"role":"browser mock text","text":"funkcie • screenshoty • návod","bbox":[116,420,144,18]}
+{"kind":"shape","slide":5,"role":"browser cta","bbox":[230,386,48,48]}
+{"kind":"shape","slide":5,"role":"browser cta text","bbox":[238,399,32,18]}
+{"kind":"textbox","slide":5,"role":"browser cta text","text":"ZIP","bbox":[238,399,32,18]}
+{"kind":"shape","slide":5,"role":"step body","bbox":[96,494,204,90]}
+{"kind":"textbox","slide":5,"role":"step body","text":"Pútavá prezentačná stránka vysvetlí hodnotu produktu, funkcie aj inštaláciu.","bbox":[96,494,204,90]}
+{"kind":"shape","slide":5,"role":"arrow","bbox":[322,410,46,36]}
+{"kind":"textbox","slide":5,"role":"arrow","text":"→","bbox":[322,410,46,36]}
+{"kind":"shape","slide":5,"role":"step 2","bbox":[372,246,244,364]}
+{"kind":"shape","slide":5,"role":"step 2 accent","bbox":[372,246,8,364]}
+{"kind":"shape","slide":5,"role":"step title","bbox":[390,268,204,28]}
+{"kind":"textbox","slide":5,"role":"step title","text":"2. Stiahnuť ZIP","bbox":[390,268,204,28]}
+{"kind":"shape","slide":5,"role":"step image frame","bbox":[388,310,212,160]}
+{"kind":"shape","slide":5,"role":"zip file","bbox":[420,334,86,108]}
+{"kind":"shape","slide":5,"role":"zip file top","bbox":[420,334,86,22]}
+{"kind":"shape","slide":5,"role":"zip label","bbox":[440,372,46,24]}
+{"kind":"textbox","slide":5,"role":"zip label","text":".zip","bbox":[440,372,46,24]}
+{"kind":"shape","slide":5,"role":"zip text","bbox":[430,404,66,20]}
+{"kind":"textbox","slide":5,"role":"zip text","text":"FORMeGO","bbox":[430,404,66,20]}
+{"kind":"shape","slide":5,"role":"download circle","bbox":[524,358,46,46]}
+{"kind":"shape","slide":5,"role":"download arrow","bbox":[532,364,30,28]}
+{"kind":"textbox","slide":5,"role":"download arrow","text":"↓","bbox":[532,364,30,28]}
+{"kind":"shape","slide":5,"role":"download flow","bbox":[406,444,170,16]}
+{"kind":"textbox","slide":5,"role":"download flow","text":"Repo → ZIP → stiahnuť","bbox":[406,444,170,16]}
+{"kind":"shape","slide":5,"role":"step body","bbox":[390,494,204,90]}
+{"kind":"textbox","slide":5,"role":"step body","text":"CTA vedie na repozitár alebo priamo na ZIP balík projektu.","bbox":[390,494,204,90]}
+{"kind":"shape","slide":5,"role":"arrow","bbox":[616,410,46,36]}
+{"kind":"textbox","slide":5,"role":"arrow","text":"→","bbox":[616,410,46,36]}
+{"kind":"shape","slide":5,"role":"step 3","bbox":[666,246,244,364]}
+{"kind":"shape","slide":5,"role":"step 3 accent","bbox":[666,246,8,364]}
+{"kind":"shape","slide":5,"role":"step title","bbox":[684,268,204,28]}
+{"kind":"textbox","slide":5,"role":"step title","text":"3. Load unpacked","bbox":[684,268,204,28]}
+{"kind":"shape","slide":5,"role":"step image frame","bbox":[682,310,212,160]}
+{"kind":"image","slide":5,"role":"step image","path":"C:\\Users\\simon\\Desktop\\Projektový manažment\\Profile_autofiller\\docs\\assets\\shot-4.png","bbox":[690,318,196,144]}
+{"kind":"shape","slide":5,"role":"step body","bbox":[684,494,204,90]}
+{"kind":"textbox","slide":5,"role":"step body","text":"Používateľ otvorí chrome://extensions a načíta priečinok autofill-profiles.","bbox":[684,494,204,90]}
+{"kind":"shape","slide":5,"role":"arrow","bbox":[910,410,46,36]}
+{"kind":"textbox","slide":5,"role":"arrow","text":"→","bbox":[910,410,46,36]}
+{"kind":"shape","slide":5,"role":"step 4","bbox":[960,246,244,364]}
+{"kind":"shape","slide":5,"role":"step 4 accent","bbox":[960,246,8,364]}
+{"kind":"shape","slide":5,"role":"step title","bbox":[978,268,204,28]}
+{"kind":"textbox","slide":5,"role":"step title","text":"4. Rozšírenie pripravené","bbox":[978,268,204,28]}
+{"kind":"shape","slide":5,"role":"step image frame","bbox":[976,310,212,160]}
+{"kind":"image","slide":5,"role":"step image","path":"C:\\Users\\simon\\Desktop\\Projektový manažment\\Profile_autofiller\\docs\\assets\\shot-2.png","bbox":[984,318,196,144]}
+{"kind":"shape","slide":5,"role":"step body","bbox":[978,494,204,90]}
+{"kind":"textbox","slide":5,"role":"step body","text":"Po focusnutí formulára sa zobrazí popover a profil vie doplniť údaje.","bbox":[978,494,204,90]}
+{"kind":"shape","slide":6,"role":"bg glow","bbox":[-80,-120,420,420]}
+{"kind":"shape","slide":6,"role":"bg glow","bbox":[960,-110,360,360]}
+{"kind":"shape","slide":6,"role":"bg glow","bbox":[860,500,340,220]}
+{"kind":"shape","slide":6,"role":"kicker","bbox":[72,42,260,22]}
+{"kind":"textbox","slide":6,"role":"kicker","text":"DEMO APLIKÁCIE","bbox":[72,42,260,22]}
+{"kind":"shape","slide":6,"role":"title","bbox":[72,74,760,72]}
+{"kind":"textbox","slide":6,"role":"title","text":"Ako FORMeGO vyzerá v praxi","bbox":[72,74,760,72]}
+{"kind":"shape","slide":6,"role":"subtitle","bbox":[74,146,820,44]}
+{"kind":"textbox","slide":6,"role":"subtitle","text":"Rozšírenie stojí na dvoch pilieroch: správa profilov a rýchly výber pri formulári.","bbox":[74,146,820,44]}
+{"kind":"shape","slide":6,"role":"main demo","bbox":[72,224,654,402]}
+{"kind":"shape","slide":6,"role":"main demo accent","bbox":[72,224,8,402]}
+{"kind":"shape","slide":6,"role":"demo title","bbox":[96,248,300,28]}
+{"kind":"textbox","slide":6,"role":"demo title","text":"Options stránka a editor profilov","bbox":[96,248,300,28]}
+{"kind":"shape","slide":6,"role":"main demo frame","bbox":[96,290,606,304]}
+{"kind":"image","slide":6,"role":"main demo image","path":"C:\\Users\\simon\\Desktop\\Projektový manažment\\Profile_autofiller\\docs\\assets\\shot-1.png","bbox":[108,302,582,280]}
+{"kind":"shape","slide":6,"role":"mini Vault unlock","bbox":[754,224,454,126]}
+{"kind":"shape","slide":6,"role":"mini Vault unlock accent","bbox":[754,224,8,126]}
+{"kind":"shape","slide":6,"role":"mini frame","bbox":[774,240,122,94]}
+{"kind":"image","slide":6,"role":"mini demo image","path":"C:\\Users\\simon\\Desktop\\Projektový manažment\\Profile_autofiller\\docs\\assets\\shot-2.png","bbox":[782,248,106,78]}
+{"kind":"shape","slide":6,"role":"mini title","bbox":[918,242,244,24]}
+{"kind":"textbox","slide":6,"role":"mini title","text":"Vault unlock","bbox":[918,242,244,24]}
+{"kind":"shape","slide":6,"role":"mini body","bbox":[918,274,252,48]}
+{"kind":"textbox","slide":6,"role":"mini body","text":"Citlivé údaje sú chránené a profilový vault sa odomyká heslom.","bbox":[918,274,252,48]}
+{"kind":"shape","slide":6,"role":"mini Editor sekcií","bbox":[754,362,454,126]}
+{"kind":"shape","slide":6,"role":"mini Editor sekcií accent","bbox":[754,362,8,126]}
+{"kind":"shape","slide":6,"role":"mini frame","bbox":[774,378,122,94]}
+{"kind":"image","slide":6,"role":"mini demo image","path":"C:\\Users\\simon\\Desktop\\Projektový manažment\\Profile_autofiller\\docs\\assets\\shot-3.png","bbox":[782,386,106,78]}
+{"kind":"shape","slide":6,"role":"mini title","bbox":[918,380,244,24]}
+{"kind":"textbox","slide":6,"role":"mini title","text":"Editor sekcií","bbox":[918,380,244,24]}
+{"kind":"shape","slide":6,"role":"mini body","bbox":[918,412,252,48]}
+{"kind":"textbox","slide":6,"role":"mini body","text":"Používateľ dopĺňa identitu, kontakt, adresu aj ďalšie údaje.","bbox":[918,412,252,48]}
+{"kind":"shape","slide":6,"role":"mini Zoznam profilov","bbox":[754,500,454,126]}
+{"kind":"shape","slide":6,"role":"mini Zoznam profilov accent","bbox":[754,500,8,126]}
+{"kind":"shape","slide":6,"role":"mini frame","bbox":[774,516,122,94]}
+{"kind":"image","slide":6,"role":"mini demo image","path":"C:\\Users\\simon\\Desktop\\Projektový manažment\\Profile_autofiller\\docs\\assets\\shot-5.png","bbox":[782,524,106,78]}
+{"kind":"shape","slide":6,"role":"mini title","bbox":[918,518,244,24]}
+{"kind":"textbox","slide":6,"role":"mini title","text":"Zoznam profilov","bbox":[918,518,244,24]}
+{"kind":"shape","slide":6,"role":"mini body","bbox":[918,550,252,48]}
+{"kind":"textbox","slide":6,"role":"mini body","text":"Výber kont typu Ja, sestra, tato alebo pracovný profil.","bbox":[918,550,252,48]}
+{"kind":"shape","slide":7,"role":"bg glow","bbox":[-80,-120,420,420]}
+{"kind":"shape","slide":7,"role":"bg glow","bbox":[960,-110,360,360]}
+{"kind":"shape","slide":7,"role":"bg glow","bbox":[860,500,340,220]}
+{"kind":"shape","slide":7,"role":"kicker","bbox":[72,42,260,22]}
+{"kind":"textbox","slide":7,"role":"kicker","text":"TECHNICKÉ ZÁLEŽITOSTI","bbox":[72,42,260,22]}
+{"kind":"shape","slide":7,"role":"title","bbox":[72,74,760,72]}
+{"kind":"textbox","slide":7,"role":"title","text":"Ako je produkt postavený","bbox":[72,74,760,72]}
+{"kind":"shape","slide":7,"role":"subtitle","bbox":[74,146,820,44]}
+{"kind":"textbox","slide":7,"role":"subtitle","text":"Technológie sú jednoduché, ale riešia presne to, čo produkt potrebuje: UI, heuristiku, storage a bezpečnosť.","bbox":[74,146,820,44]}
+{"kind":"shape","slide":7,"role":"architecture shell","bbox":[72,230,1136,380]}
+{"kind":"shape","slide":7,"role":"Manifest V3","bbox":[100,286,218,138]}
+{"kind":"shape","slide":7,"role":"Manifest V3 accent","bbox":[100,286,8,138]}
+{"kind":"shape","slide":7,"role":"arch title","bbox":[118,304,182,28]}
+{"kind":"textbox","slide":7,"role":"arch title","text":"Manifest V3","bbox":[118,304,182,28]}
+{"kind":"shape","slide":7,"role":"arch body","bbox":[118,342,182,58]}
+{"kind":"textbox","slide":7,"role":"arch body","text":"Chrome/Edge extension so správnym life-cyclom a host permissions.","bbox":[118,342,182,58]}
+{"kind":"shape","slide":7,"role":"Content script","bbox":[372,286,240,138]}
+{"kind":"shape","slide":7,"role":"Content script accent","bbox":[372,286,8,138]}
+{"kind":"shape","slide":7,"role":"arch title","bbox":[390,304,204,28]}
+{"kind":"textbox","slide":7,"role":"arch title","text":"Content script","bbox":[390,304,204,28]}
+{"kind":"shape","slide":7,"role":"arch body","bbox":[390,342,204,58]}
+{"kind":"textbox","slide":7,"role":"arch body","text":"Sleduje focus formulárov, zobrazuje popover a mapuje polia heuristikou.","bbox":[390,342,204,58]}
+{"kind":"shape","slide":7,"role":"Options page","bbox":[666,286,240,138]}
+{"kind":"shape","slide":7,"role":"Options page accent","bbox":[666,286,8,138]}
+{"kind":"shape","slide":7,"role":"arch title","bbox":[684,304,204,28]}
+{"kind":"textbox","slide":7,"role":"arch title","text":"Options page","bbox":[684,304,204,28]}
+{"kind":"shape","slide":7,"role":"arch body","bbox":[684,342,204,58]}
+{"kind":"textbox","slide":7,"role":"arch body","text":"Editor profilov, sekcie údajov, dark UI a správa vaultu.","bbox":[684,342,204,58]}
+{"kind":"shape","slide":7,"role":"Background + storage","bbox":[960,286,218,138]}
+{"kind":"shape","slide":7,"role":"Background + storage accent","bbox":[960,286,8,138]}
+{"kind":"shape","slide":7,"role":"arch title","bbox":[978,304,182,28]}
+{"kind":"textbox","slide":7,"role":"arch title","text":"Background + storage","bbox":[978,304,182,28]}
+{"kind":"shape","slide":7,"role":"arch body","bbox":[978,342,182,58]}
+{"kind":"textbox","slide":7,"role":"arch body","text":"Šifrovaný vault, messaging a práca s chrome.storage.","bbox":[978,342,182,58]}
+{"kind":"shape","slide":7,"role":"arrow","bbox":[320,340,42,36]}
+{"kind":"textbox","slide":7,"role":"arrow","text":"→","bbox":[320,340,42,36]}
+{"kind":"shape","slide":7,"role":"arrow","bbox":[614,340,42,36]}
+{"kind":"textbox","slide":7,"role":"arrow","text":"→","bbox":[614,340,42,36]}
+{"kind":"shape","slide":7,"role":"arrow","bbox":[908,340,42,36]}
+{"kind":"textbox","slide":7,"role":"arrow","text":"→","bbox":[908,340,42,36]}
+{"kind":"shape","slide":7,"role":"pill","bbox":[100,520,198,38]}
+{"kind":"textbox","slide":7,"role":"pill","text":"HTML + CSS + JavaScript","bbox":[100,520,198,38]}
+{"kind":"shape","slide":7,"role":"pill","bbox":[316,520,198,38]}
+{"kind":"textbox","slide":7,"role":"pill","text":"chrome.storage.sync","bbox":[316,520,198,38]}
+{"kind":"shape","slide":7,"role":"pill","bbox":[532,520,198,38]}
+{"kind":"textbox","slide":7,"role":"pill","text":"React/Vue compatible events","bbox":[532,520,198,38]}
+{"kind":"shape","slide":7,"role":"pill","bbox":[748,520,198,38]}
+{"kind":"textbox","slide":7,"role":"pill","text":"heuristické mapovanie polí","bbox":[748,520,198,38]}
+{"kind":"shape","slide":7,"role":"pill","bbox":[964,520,198,38]}
+{"kind":"textbox","slide":7,"role":"pill","text":"AES-GCM vault","bbox":[964,520,198,38]}
+{"kind":"shape","slide":8,"role":"bg glow","bbox":[-80,-120,420,420]}
+{"kind":"shape","slide":8,"role":"bg glow","bbox":[960,-110,360,360]}
+{"kind":"shape","slide":8,"role":"bg glow","bbox":[860,500,340,220]}
+{"kind":"shape","slide":8,"role":"kicker","bbox":[72,42,260,22]}
+{"kind":"textbox","slide":8,"role":"kicker","text":"SPÄTNÁ VÄZBA","bbox":[72,42,260,22]}
+{"kind":"shape","slide":8,"role":"title","bbox":[72,74,760,72]}
+{"kind":"textbox","slide":8,"role":"title","text":"Zdroj, feedback, odpoveď, ponaučenie","bbox":[72,74,760,72]}
+{"kind":"shape","slide":8,"role":"subtitle","bbox":[74,146,820,44]}
+{"kind":"textbox","slide":8,"role":"subtitle","text":"Feedback neslúžil len na potvrdenie nápadu, ale aj na zúženie rozsahu a lepšie prioritizovanie.","bbox":[74,146,820,44]}
+{"kind":"shape","slide":8,"role":"feedback Zdroj","bbox":[72,258,254,314]}
+{"kind":"shape","slide":8,"role":"feedback Zdroj accent","bbox":[72,258,8,314]}
+{"kind":"shape","slide":8,"role":"feedback title","bbox":[90,286,180,30]}
+{"kind":"textbox","slide":8,"role":"feedback title","text":"Zdroj","bbox":[90,286,180,30]}
+{"kind":"shape","slide":8,"role":"feedback body","bbox":[90,336,214,188]}
+{"kind":"textbox","slide":8,"role":"feedback body","text":"Dotazník medzi používateľmi + porovnanie riešení ako AutoFill Forms, Bitwarden a LastPass.","bbox":[90,336,214,188]}
+{"kind":"shape","slide":8,"role":"feedback Feedback","bbox":[366,258,254,314]}
+{"kind":"shape","slide":8,"role":"feedback Feedback accent","bbox":[366,258,8,314]}
+{"kind":"shape","slide":8,"role":"feedback title","bbox":[384,286,180,30]}
+{"kind":"textbox","slide":8,"role":"feedback title","text":"Feedback","bbox":[384,286,180,30]}
+{"kind":"shape","slide":8,"role":"feedback body","bbox":[384,336,214,188]}
+{"kind":"textbox","slide":8,"role":"feedback body","text":"Ľudia chceli hlavne rýchlosť, viac profilov, firemné údaje a minimum klikov. Zaznel aj nápad na templaty adries.","bbox":[384,336,214,188]}
+{"kind":"shape","slide":8,"role":"feedback Odpoveď","bbox":[660,258,254,314]}
+{"kind":"shape","slide":8,"role":"feedback Odpoveď accent","bbox":[660,258,8,314]}
+{"kind":"shape","slide":8,"role":"feedback title","bbox":[678,286,180,30]}
+{"kind":"textbox","slide":8,"role":"feedback title","text":"Odpoveď","bbox":[678,286,180,30]}
+{"kind":"shape","slide":8,"role":"feedback body","bbox":[678,336,214,188]}
+{"kind":"textbox","slide":8,"role":"feedback body","text":"Produkt som rozšíril o širší dátový model, celý formulár na jeden klik a bezpečnostný hardening citlivých údajov.","bbox":[678,336,214,188]}
+{"kind":"shape","slide":8,"role":"feedback Ponaučenie","bbox":[954,258,254,314]}
+{"kind":"shape","slide":8,"role":"feedback Ponaučenie accent","bbox":[954,258,8,314]}
+{"kind":"shape","slide":8,"role":"feedback title","bbox":[972,286,180,30]}
+{"kind":"textbox","slide":8,"role":"feedback title","text":"Ponaučenie","bbox":[972,286,180,30]}
+{"kind":"shape","slide":8,"role":"feedback body","bbox":[972,336,214,188]}
+{"kind":"textbox","slide":8,"role":"feedback body","text":"Najväčšiu hodnotu netvorí množstvo funkcií, ale jasný flow: fokus na pole, výber profilu, hotovo.","bbox":[972,336,214,188]}
+{"kind":"shape","slide":8,"role":"feedback footer","bbox":[72,618,1138,26]}
+{"kind":"textbox","slide":8,"role":"feedback footer","text":"Benchmark + survey = potvrdenie, že jednoduché autofill riešenie má zmysel, ak je rýchle a dôveryhodné.","bbox":[72,618,1138,26]}
+{"kind":"shape","slide":9,"role":"bg glow","bbox":[-80,-120,420,420]}
+{"kind":"shape","slide":9,"role":"bg glow","bbox":[960,-110,360,360]}
+{"kind":"shape","slide":9,"role":"bg glow","bbox":[860,500,340,220]}
+{"kind":"shape","slide":9,"role":"cta shell","bbox":[54,54,1172,612]}
+{"kind":"shape","slide":9,"role":"cta title","bbox":[620,118,460,62]}
+{"kind":"textbox","slide":9,"role":"cta title","text":"Vyskúšaj FORMeGO","bbox":[620,118,460,62]}
+{"kind":"shape","slide":9,"role":"cta subtitle","bbox":[622,188,488,74]}
+{"kind":"textbox","slide":9,"role":"cta subtitle","text":"Naskenuj QR kód a otvor GitHub Pages prezentáciu alebo repozitár so zdrojovým kódom.","bbox":[622,188,488,74]}
+{"kind":"shape","slide":9,"role":"qr panel","bbox":[100,116,420,420]}
+{"kind":"shape","slide":9,"role":"qr panel accent","bbox":[100,116,8,420]}
+{"kind":"shape","slide":9,"role":"qr surface","bbox":[148,160,324,324]}
+{"kind":"image","slide":9,"role":"qr image","path":"C:\\Users\\simon\\Desktop\\Projektový manažment\\Profile_autofiller\\docs\\formego-qr.png","bbox":[172,184,276,276]}
+{"kind":"shape","slide":9,"role":"qr caption","bbox":[100,556,420,28]}
+{"kind":"textbox","slide":9,"role":"qr caption","text":"GitHub Pages","bbox":[100,556,420,28]}
+{"kind":"shape","slide":9,"role":"url panel","bbox":[620,304,510,88]}
+{"kind":"shape","slide":9,"role":"url panel accent","bbox":[620,304,8,88]}
+{"kind":"shape","slide":9,"role":"cta url","bbox":[646,334,460,26]}
+{"kind":"textbox","slide":9,"role":"cta url","text":"simoncalik.github.io/FORMeGO","bbox":[646,334,460,26]}
+{"kind":"shape","slide":9,"role":"repo panel","bbox":[620,416,510,88]}
+{"kind":"shape","slide":9,"role":"repo panel accent","bbox":[620,416,8,88]}
+{"kind":"shape","slide":9,"role":"cta repo","bbox":[646,446,460,26]}
+{"kind":"textbox","slide":9,"role":"cta repo","text":"github.com/SimonCalik/FORMeGO","bbox":[646,446,460,26]}
+{"kind":"shape","slide":9,"role":"pill","bbox":[620,542,146,38]}
+{"kind":"textbox","slide":9,"role":"pill","text":"GitHub Pages","bbox":[620,542,146,38]}
+{"kind":"shape","slide":9,"role":"pill","bbox":[780,542,150,38]}
+{"kind":"textbox","slide":9,"role":"pill","text":"ZIP download","bbox":[780,542,150,38]}
+{"kind":"shape","slide":9,"role":"pill","bbox":[944,542,166,38]}
+{"kind":"textbox","slide":9,"role":"pill","text":"Load unpacked","bbox":[944,542,166,38]}
