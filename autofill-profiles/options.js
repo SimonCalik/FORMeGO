@@ -1,4 +1,4 @@
-// options.js - Unlocks encrypted vault and manages profiles through background messaging only.
+﻿// options.js - Unlocks encrypted vault and manages profiles through background messaging only.
 (() => {
   const FIELD_KEYS = [
     'firstName', 'middleName', 'lastName', 'fullName', 'nickName',
@@ -19,6 +19,12 @@
     setupPassphraseConfirm: document.getElementById('setupPassphraseConfirm'),
     unlockForm: document.getElementById('unlockForm'),
     unlockPassphrase: document.getElementById('unlockPassphrase'),
+    changePassActions: document.getElementById('changePassActions'),
+    toggleChangePass: document.getElementById('toggleChangePass'),
+    changePassForm: document.getElementById('changePassForm'),
+    changePassphraseCurrent: document.getElementById('changePassphraseCurrent'),
+    changePassphraseNext: document.getElementById('changePassphraseNext'),
+    changePassphraseConfirm: document.getElementById('changePassphraseConfirm'),
     appView: document.getElementById('appView'),
     list: document.getElementById('profileList'),
     form: document.getElementById('profileForm'),
@@ -33,6 +39,7 @@
   let selectedId = null;
   let unlockedPassphrase = '';
   let vaultStatus = null;
+  let changePassVisible = false;
 
   function sendRuntimeMessage(message) {
     return new Promise((resolve, reject) => {
@@ -66,6 +73,25 @@
     els.appStatus.style.color = isError ? '#ff9ba8' : '#b6c2d8';
   }
 
+  function clearEditorForm() {
+    els.form.reset();
+    els.label.value = '';
+    for (const key of FIELD_KEYS) {
+      const input = getFieldEl(key);
+      if (input) input.value = '';
+    }
+  }
+
+  function clearUnlockedUi() {
+    profiles = [];
+    selectedId = null;
+    unlockedPassphrase = '';
+    clearEditorForm();
+    els.list.textContent = '';
+    showAppStatus('');
+    els.appView.hidden = true;
+  }
+
   function emptyData() {
     const data = {};
     for (const key of FIELD_KEYS) data[key] = '';
@@ -91,12 +117,7 @@
 
   function fillForm(profile) {
     if (!profile) {
-      els.form.reset();
-      els.label.value = '';
-      for (const key of FIELD_KEYS) {
-        const input = getFieldEl(key);
-        if (input) input.value = '';
-      }
+      clearEditorForm();
       return;
     }
 
@@ -150,10 +171,15 @@
   }
 
   function renderAuthView() {
-    els.appView.hidden = true;
+    clearUnlockedUi();
     els.authView.hidden = false;
     els.setupForm.hidden = true;
     els.unlockForm.hidden = true;
+    els.changePassActions.hidden = true;
+    els.changePassForm.hidden = true;
+    els.setupForm.reset();
+    els.unlockForm.reset();
+    els.changePassForm.reset();
 
     if (!vaultStatus) {
       els.authTitle.textContent = 'Nacitavam bezpecnostne nastavenia';
@@ -170,9 +196,12 @@
       return;
     }
 
-    els.authTitle.textContent = 'Vault je zamknuty';
-    els.authDescription.textContent = 'Zadaj heslo, aby sa profily nacitali do bezpecnej relacie iba v pamati rozsirrenia.';
+    els.authTitle.textContent = 'Odomknut vault';
+    els.authDescription.textContent = 'Zadaj heslo a nacitaj profily iba do docasnej bezpecnej relacie v pamati rozsirrenia.';
     els.unlockForm.hidden = false;
+    els.changePassActions.hidden = false;
+    els.changePassForm.hidden = !changePassVisible;
+    els.toggleChangePass.textContent = changePassVisible ? 'Zrusit zmenu hesla' : 'Zmenit heslo';
   }
 
   function renderAppView() {
@@ -194,9 +223,6 @@
       return;
     }
 
-    profiles = [];
-    selectedId = null;
-    unlockedPassphrase = '';
     renderAuthView();
   }
 
@@ -243,11 +269,52 @@
     try {
       await sendRuntimeMessage({ type: 'UNLOCK_VAULT', passphrase });
       unlockedPassphrase = passphrase;
+      changePassVisible = false;
       els.unlockForm.reset();
       showAuthStatus('');
       await refreshVaultState();
-    } catch (error) {
+    } catch (_error) {
       showAuthStatus('Odomknutie zlyhalo. Skontroluj heslo.', true);
+    }
+  }
+
+  async function onChangePassSubmit(event) {
+    event.preventDefault();
+
+    const currentPassphrase = els.changePassphraseCurrent.value;
+    const nextPassphrase = els.changePassphraseNext.value;
+    const confirmPassphrase = els.changePassphraseConfirm.value;
+
+    if (!currentPassphrase) {
+      showAuthStatus('Zadaj aktualne heslo.', true);
+      return;
+    }
+
+    if (nextPassphrase.length < 8) {
+      showAuthStatus('Nove heslo musi mat aspon 8 znakov.', true);
+      return;
+    }
+
+    if (nextPassphrase !== confirmPassphrase) {
+      showAuthStatus('Nove hesla sa nezhoduju.', true);
+      return;
+    }
+
+    showAuthStatus('Ukladam nove heslo...');
+
+    try {
+      await sendRuntimeMessage({
+        type: 'CHANGE_VAULT_PASSPHRASE',
+        currentPassphrase,
+        nextPassphrase
+      });
+      unlockedPassphrase = nextPassphrase;
+      changePassVisible = false;
+      els.changePassForm.reset();
+      showAuthStatus('Heslo pre vault bolo zmenene.');
+      await refreshVaultState();
+    } catch (error) {
+      showAuthStatus(String(error.message || error), true);
     }
   }
 
@@ -333,14 +400,23 @@
   }
 
   async function onLockVault() {
+    clearUnlockedUi();
+    vaultStatus = { ...(vaultStatus || {}), unlocked: false, profileCount: 0 };
+    changePassVisible = false;
+    renderAuthView();
+
     try {
       await sendRuntimeMessage({ type: 'LOCK_VAULT' });
-      unlockedPassphrase = '';
-      showAppStatus('');
       await refreshVaultState();
     } catch (error) {
       showAppStatus(String(error.message || error), true);
     }
+  }
+
+  function onToggleChangePass() {
+    changePassVisible = !changePassVisible;
+    showAuthStatus('');
+    renderAuthView();
   }
 
   async function init() {
@@ -355,6 +431,8 @@
 
   els.setupForm.addEventListener('submit', onSetupSubmit);
   els.unlockForm.addEventListener('submit', onUnlockSubmit);
+  els.changePassForm.addEventListener('submit', onChangePassSubmit);
+  els.toggleChangePass.addEventListener('click', onToggleChangePass);
   els.addBtn.addEventListener('click', onAddProfile);
   els.form.addEventListener('submit', onSaveProfile);
   els.delBtn.addEventListener('click', onDeleteProfile);

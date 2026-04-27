@@ -238,6 +238,21 @@ async function unlockVault(passphrase) {
   return getVaultStatus();
 }
 
+async function changeVaultPassphrase(currentPassphrase, nextPassphrase) {
+  if (!currentPassphrase) throw new Error('Current passphrase is required.');
+  if (!nextPassphrase || nextPassphrase.length < 8) {
+    throw new Error('New passphrase must have at least 8 characters.');
+  }
+
+  const vault = await getVaultRecord();
+  if (!vault) {
+    throw new Error('Vault is not initialized.');
+  }
+
+  const profiles = await decryptVault(vault, currentPassphrase);
+  return persistProfiles(profiles, nextPassphrase);
+}
+
 async function saveProfile(profile, passphrase) {
   const profiles = await getUnlockedProfiles();
   if (!profiles) throw new Error('Vault is locked.');
@@ -332,6 +347,15 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
 
       case 'DELETE_PROFILE': {
         const profiles = await deleteProfile(String(message.id || ''), String(message.passphrase || ''));
+        sendResponse({ ok: true, profiles });
+        return;
+      }
+
+      case 'CHANGE_VAULT_PASSPHRASE': {
+        const profiles = await changeVaultPassphrase(
+          String(message.currentPassphrase || ''),
+          String(message.nextPassphrase || '')
+        );
         sendResponse({ ok: true, profiles });
         return;
       }

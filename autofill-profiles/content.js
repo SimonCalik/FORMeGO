@@ -420,7 +420,7 @@
     if (requestId !== openRequestId || lastFocusedEl !== el || !popoverEl) return;
 
     if (!vaultStatus) {
-      renderStateMessage(list, 'Vault nie je dostupný. Klikni ✎ a otvor nastavenia.');
+      renderStateMessage(list, 'Vault je uzamknutý');
       repositionPopover();
       return;
     }

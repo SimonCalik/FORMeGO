@@ -26,11 +26,11 @@
 
       <form id="setupForm" class="auth-form" hidden>
         <label>
-          Heslo pre vault
+          Nove heslo
           <input id="setupPassphrase" type="password" minlength="8" autocomplete="new-password" required />
         </label>
         <label>
-          Potvrdit heslo
+          Potvrdit nove heslo
           <input id="setupPassphraseConfirm" type="password" minlength="8" autocomplete="new-password" required />
         </label>
         <button id="setupSubmit" type="submit">Vytvorit sifrovany vault</button>
@@ -38,10 +38,30 @@
 
       <form id="unlockForm" class="auth-form" hidden>
         <label>
-          Heslo pre odomknutie
+          Heslo
           <input id="unlockPassphrase" type="password" autocomplete="current-password" required />
         </label>
         <button id="unlockSubmit" type="submit">Odomknut profily</button>
+      </form>
+
+      <div id="changePassActions" class="auth-inline-actions" hidden>
+        <button id="toggleChangePass" type="button" class="secondary-btn compact-btn">Zmenit heslo</button>
+      </div>
+
+      <form id="changePassForm" class="auth-form" hidden>
+        <label>
+          Aktualne heslo
+          <input id="changePassphraseCurrent" type="password" autocomplete="current-password" required />
+        </label>
+        <label>
+          Nove heslo
+          <input id="changePassphraseNext" type="password" minlength="8" autocomplete="new-password" required />
+        </label>
+        <label>
+          Potvrdit nove heslo
+          <input id="changePassphraseConfirm" type="password" minlength="8" autocomplete="new-password" required />
+        </label>
+        <button id="changePassSubmit" type="submit">Ulozit nove heslo</button>
       </form>
 
       <p id="authStatus" class="status" aria-live="polite"></p>
