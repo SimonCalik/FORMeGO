@@ -1,0 +1,204 @@
+/* legal.css - Shared GitHub Pages styling for FORMeGO legal subpages. */
+:root {
+  --bg: #08111f;
+  --panel: rgba(16, 28, 46, 0.92);
+  --panel-soft: rgba(19, 34, 58, 0.96);
+  --line: rgba(132, 171, 231, 0.18);
+  --text: #edf5ff;
+  --text-soft: #abc0de;
+  --accent: #57a8ff;
+  --accent-soft: #86c0ff;
+  --mint: #7fe0be;
+  --shadow: 0 26px 80px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(87, 168, 255, 0.22), transparent 30%),
+    radial-gradient(circle at top right, rgba(127, 224, 190, 0.12), transparent 24%),
+    linear-gradient(180deg, #07101b 0%, #0b1524 100%);
+  font: 16px/1.7 "Trebuchet MS", "Segoe UI", sans-serif;
+}
+
+a {
+  color: var(--accent-soft);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.page-shell {
+  width: min(980px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 20px 0 48px;
+}
+
+.hero,
+.legal-card {
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.hero {
+  padding: 22px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.brand-lockup {
+  width: min(250px, 42vw);
+  height: auto;
+}
+
+.topbar-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.topbar-links a {
+  color: var(--text-soft);
+  font-size: 14px;
+}
+
+.hero-copy {
+  margin-top: 22px;
+  display: grid;
+  gap: 12px;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--mint);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: "Georgia", "Times New Roman", serif;
+}
+
+h1 {
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1.02;
+}
+
+h2 {
+  margin-top: 26px;
+  font-size: 28px;
+  line-height: 1.15;
+}
+
+h3 {
+  margin-top: 18px;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.hero-text,
+.lead {
+  color: var(--text-soft);
+  font-size: 18px;
+}
+
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.meta-pill {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(17, 31, 52, 0.84);
+  border: 1px solid rgba(130, 178, 245, 0.15);
+  color: var(--text-soft);
+  font-size: 14px;
+}
+
+.legal-card {
+  margin-top: 22px;
+  padding: 28px;
+}
+
+.legal-card p,
+.legal-card li {
+  color: var(--text-soft);
+}
+
+.legal-card ul {
+  padding-left: 20px;
+}
+
+.legal-card strong {
+  color: var(--text);
+}
+
+.link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(130, 178, 245, 0.25);
+  background: rgba(17, 32, 55, 0.6);
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.secondary-btn:hover {
+  text-decoration: none;
+}
+
+code {
+  padding: 2px 6px;
+  border-radius: 8px;
+  background: rgba(18, 31, 50, 0.95);
+  color: #d6ebff;
+  font-family: Consolas, monospace;
+}
+
+@media (max-width: 720px) {
+  .page-shell {
+    width: min(100% - 18px, 980px);
+  }
+
+  .hero,
+  .legal-card {
+    padding: 18px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
